@@ -1,2 +1,2 @@
 # Pygame Examples
-Just a bunch of pygame examples
+Just a bunch of `pygame` examples
