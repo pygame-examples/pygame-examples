@@ -1,5 +1,3 @@
-import asyncio
-
 import pygame
 
 from .enums import GameStates
@@ -22,17 +20,13 @@ class Game:
         }
 
     def run(self):
-        asyncio.run(self._run())
-
-    async def _run(self):
         while self.running:
-            self._process()
-            await asyncio.sleep(0)
+            self._run()
 
-    def _process(self):
+    def _run(self):
         self.clock.tick(60)
         self.screen.fill('grey10')
- 
+
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
@@ -47,8 +41,3 @@ class Game:
     @classmethod
     def set_state(cls, state: GameStates) -> None:
         cls.current_state = state
-
-
-if __name__ == '__main__':
-    game = Game()
-    game.run()
