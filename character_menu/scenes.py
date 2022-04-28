@@ -78,8 +78,8 @@ class GamePlay(Scene):
         player_group.add(player)
         super().__init__(player_group)
 
-    def update(self):
-        super().update()
+    def show(self, surface: pygame.Surface):
+        super().show(surface)
         if not player.alive:
             player.reset()
             self.set_state(GameStates.MAIN_MENU)
