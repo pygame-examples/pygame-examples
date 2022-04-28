@@ -25,6 +25,7 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         dx, dy = 0, 0
         keys = pygame.key.get_pressed()
+
         if keys[pygame.K_w]:
             dy -= self.velocity
         if keys[pygame.K_s]:
