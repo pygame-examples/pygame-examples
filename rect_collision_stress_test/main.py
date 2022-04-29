@@ -52,9 +52,9 @@ async def main():
         ))
 
         pygame.display.flip()
+        await asyncio.sleep(0)
 
     pygame.quit()
-    await asyncio.sleep(0)
 
 
 def run():
