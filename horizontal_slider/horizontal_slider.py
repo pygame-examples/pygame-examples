@@ -37,7 +37,6 @@ class HorizontalSlider:
                 self.clicked = False
                 value = self.value
                 if self.prev_value != value:
-                    self.callback(value)
                     self.prev_value = value
 
             elif event.type == pygame.MOUSEMOTION and self.clicked:
@@ -53,8 +52,8 @@ class HorizontalSlider:
         return False
 
     def draw(self, surface: pygame.Surface) -> None:
-        pygame.draw.circle(surface, 'grey75', (self.x, self.y), self.radius)
         pygame.draw.rect(surface, 'grey50', self.rail)
+        pygame.draw.circle(surface, 'grey75', (self.x, self.y), self.radius)
 
     def clamp_rail(self, pos: tuple[int, int]) -> tuple[int, int]:
         x, y = pos
@@ -66,14 +65,15 @@ class HorizontalSlider:
     def value(self) -> int:
         distance = self.x - (self.rail.left+self.radius)  # self.button.centerx in case of a rectangle
         rel_val = distance / (self.rail.width - 2*self.radius)  # self.button.width instead of diameter for a rectangle
-        value = round((self.range*rel_val + self.min_value)/self.step) * self.step
+        value = self.min_value + round((self.range*rel_val)/self.step)*self.step
         return value
 
     @value.setter
     def value(self, value: int) -> None:
-        value = value and round(value/self.step) * self.step
+        value = value and round(value/self.step)*self.step - self.min_value
         rel_val = value / self.range
         new_rel_pos = round(rel_val * (self.rail.width - 2*self.radius))  # look at value property `rel_val`
         self.x = new_rel_pos + self.rail.left + self.radius
+        value += self.min_value
         self.prev_value = value
         self.callback(value)
