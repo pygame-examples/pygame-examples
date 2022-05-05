@@ -15,11 +15,9 @@ async def main():
     clock = pygame.time.Clock()
 
     background_gif = GIFPlayer(
-        os.path.join(
-            os.path.dirname(__file__), "image.gif"
-        ),
+        os.path.join(os.path.dirname(__file__), "image.gif"),
         size=(WIDTH, HEIGHT),
-        exclude=(0,)
+        exclude=(0,),
     )
 
     running = True
@@ -41,5 +39,5 @@ def run():
     asyncio.run(main())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run()
