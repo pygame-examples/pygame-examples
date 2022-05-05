@@ -5,9 +5,9 @@ import pygame
 
 class Reddy(pygame.sprite.Sprite):
     RED_SURF = pygame.Surface((10, 10))
-    RED_SURF.fill('red')
+    RED_SURF.fill("red")
     GREEN_SURF = pygame.Surface((10, 10))
-    GREEN_SURF.fill('green')
+    GREEN_SURF.fill("green")
 
     VECTOR = pygame.Vector2(1, 0)
 

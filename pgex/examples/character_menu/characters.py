@@ -4,18 +4,18 @@ import pygame
 
 
 def _load_image(path):
-    return pygame.image.load(os.path.join(os.path.dirname(__file__), 'assets', path))
+    return pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", path))
 
 
 class BaseCharacter:
-    name = ''
+    name = ""
     image = pygame.Surface((1, 1))
     velocity = 5
 
 
 class Guy(BaseCharacter):
-    name = 'Guy'
-    image = _load_image('guy.png')
+    name = "Guy"
+    image = _load_image("guy.png")
     velocity = 5
 
 
@@ -23,26 +23,26 @@ DefaultCharacter = Guy
 
 
 class Mage(BaseCharacter):
-    name = 'Mage'
-    image = _load_image('mage.png')
+    name = "Mage"
+    image = _load_image("mage.png")
     velocity = 3
 
 
 class Knight(BaseCharacter):
-    name = 'Knight'
-    image = _load_image('knight.png')
+    name = "Knight"
+    image = _load_image("knight.png")
     velocity = 1
 
 
 class Archer(BaseCharacter):
-    name = 'Archer'
-    image = _load_image('archer.png')
+    name = "Archer"
+    image = _load_image("archer.png")
     velocity = 7
 
 
 class Pawn(BaseCharacter):
-    name = 'Black e5 pawn'
-    image = _load_image('pawn.png')
+    name = "Black e5 pawn"
+    image = _load_image("pawn.png")
     velocity = 1
 
 
