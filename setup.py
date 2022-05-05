@@ -6,7 +6,7 @@ VERSION = "0.0.1"
 DESCRIPTION = "A collection of pygame examples"
 LONG_DESCRIPTION = """
 A collection of pygame examples that support WASM, 
-and can be ran on desktop/browser and viewed on the browser.
+and can be run on desktop/browser and viewed on the browser.
 """
 
 # Setup
