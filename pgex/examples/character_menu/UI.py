@@ -1,5 +1,5 @@
 import functools
-
+from typing import List, Optional, Tuple, Union
 import pygame
 
 
@@ -11,13 +11,13 @@ def _font_loader(name, size):
 class Button(pygame.sprite.Sprite):
     def __init__(self, dct: dict) -> None:
         super().__init__()
-        size = dct.get('size', (1, 1))
-        pos = dct.get('pos', (0, 0))
-        font = _font_loader(*dct.get('font', (None, 32)))
-        bg = dct.get('bg', 'black')
-        fg = dct.get('fg', 'white')
-        text = dct.get('text', '')
-        self.callback = dct.get('callback', lambda: None)
+        size = dct.get("size", (1, 1))
+        pos = dct.get("pos", (0, 0))
+        font = _font_loader(*dct.get("font", (None, 32)))
+        bg = dct.get("bg", "black")
+        fg = dct.get("fg", "white")
+        text = dct.get("text", "")
+        self.callback = dct.get("callback", lambda: None)
         self.clicked = False
         self.ready = False
 
@@ -50,12 +50,12 @@ class Button(pygame.sprite.Sprite):
 class Text(pygame.sprite.Sprite):
     def __init__(self, dct: dict) -> None:
         super().__init__()
-        self.pos = dct.get('pos', (0, 0))
-        self.font = _font_loader(*dct.get('font', (None, 32)))
-        self.fg = dct.get('fg', 'white')
-        text = dct.get('text', 'aaaaaaaaaa')
-        self.angle = dct.get('angle', 0)
-        self.text_var = dct.get('text_var', None)
+        self.pos = dct.get("pos", (0, 0))
+        self.font = _font_loader(*dct.get("font", (None, 32)))
+        self.fg = dct.get("fg", "white")
+        text = dct.get("text", "aaaaaaaaaa")
+        self.angle = dct.get("angle", 0)
+        self.text_var = dct.get("text_var", None)
 
         text_surf = self.font.render(text, True, self.fg)
         self.image = pygame.transform.rotate(text_surf, self.angle)
@@ -69,23 +69,22 @@ class Text(pygame.sprite.Sprite):
 
 
 class UIGroup(pygame.sprite.Group):
-    def __init__(self, config: list[dict], element) -> None:
+    def __init__(self, config: List[dict], element) -> None:
         super().__init__()
         self.element = element
         self.parse_config(config)
 
-    def parse_config(self, config: list[dict]) -> None:
+    def parse_config(self, config: List[dict]) -> None:
         for dct in config:
             element = self.element(dct)
             self.add(element)
 
-
 class CarouselMenu(pygame.sprite.Sprite):
     def __init__(
-            self,
-            pos: tuple[int, int] | list[int, int],
-            lst: list,
-            size: tuple[int, int] | list[int, int] | None = None
+        self,
+        pos: Union[Tuple[int, int], List[int]],
+        lst: List,
+        size: Optional[Union[Tuple[int, int], List[int]]] = None,
     ) -> None:
         super().__init__()
         self.pos = pos

@@ -3,12 +3,12 @@ import pygame
 
 class HorizontalSlider:
     def __init__(
-            self,
-            rect: pygame.Rect,
-            min_value: int = 10,
-            max_value: int = 1000,
-            step: int = 10,
-            callback: callable = lambda _: None
+        self,
+        rect: pygame.Rect,
+        min_value: int = 10,
+        max_value: int = 1000,
+        step: int = 10,
+        callback: callable = lambda _: None,
     ):
         self.current_value = min_value
 
@@ -17,14 +17,16 @@ class HorizontalSlider:
         self.button_rect.left = rect.left
 
         value_range = max_value - min_value
-        adjusted_step = value_range / (rect.width-self.button_rect.width)
+        adjusted_step = value_range / (rect.width - self.button_rect.width)
         value_step = max(step, int(adjusted_step))
-        dist_step = (rect.width-self.button_rect.width) / (value_range/value_step)
+        dist_step = (rect.width - self.button_rect.width) / (value_range / value_step)
 
         self.data = [
-            (v, x) for v, x
-            in zip(range(min_value, max_value, value_step),
-                   range(self.button_rect.width // 2, rect.width, round(dist_step)))
+            (v, x)
+            for v, x in zip(
+                range(min_value, max_value, value_step),
+                range(self.button_rect.width // 2, rect.width, round(dist_step)),
+            )
         ]
         self.data += [(max_value, rect.width)]
         self.callback = callback
@@ -52,10 +54,10 @@ class HorizontalSlider:
                     self.button_rect.centerx = pos + self.rail_rect.left
 
     def clamp(self, x: int, min_value: int = None, max_value: int = None):
-        min_value = min_value or self.rail_rect.left + self.button_rect.width/2
+        min_value = min_value or self.rail_rect.left + self.button_rect.width / 2
         max_value = max_value or self.rail_rect.right
         return max(min_value, min(x, max_value))
 
     def draw(self, display: pygame.Surface) -> None:
-        pygame.draw.rect(display, 'grey20', self.rail_rect)
-        pygame.draw.rect(display, 'grey50', self.button_rect)
+        pygame.draw.rect(display, "grey20", self.rail_rect)
+        pygame.draw.rect(display, "grey50", self.button_rect)

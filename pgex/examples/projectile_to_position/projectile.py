@@ -3,7 +3,7 @@ import pygame
 
 class Projectile(pygame.sprite.Sprite):
     image = pygame.Surface((20, 10), flags=pygame.SRCALPHA)
-    pygame.draw.polygon(image, 'red', ((0, 0), (15, 0), (20, 5), (15, 10), (0, 10)))
+    pygame.draw.polygon(image, "red", ((0, 0), (15, 0), (20, 5), (15, 10), (0, 10)))
     velocity = 5
     max_distance = 200
 
@@ -24,4 +24,4 @@ class Projectile(pygame.sprite.Sprite):
         if self.travelled_distance > self.max_distance:
             self.kill()
         self.travelled_distance += self.velocity
-        self.rect.center = self.start_pos + self.vector*self.travelled_distance
+        self.rect.center = self.start_pos + self.vector * self.travelled_distance

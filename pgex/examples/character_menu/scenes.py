@@ -23,18 +23,30 @@ class Scene:
 class MainMenu(Scene):
     def __init__(self, set_state: callable) -> None:
         btn_config = [
-            {'pos': (250, 125), 'size': (300, 100),
-             'bg': 'navy', 'text': 'Play',
-             'callback': lambda: set_state(GameStates.GAMEPLAY)},
-            {'pos': (250, 275), 'size': (300, 100),
-             'bg': 'brown', 'text': 'Characters',
-             'callback': lambda: set_state(GameStates.CHARACTER_MENU)}
+            {
+                "pos": (250, 125),
+                "size": (300, 100),
+                "bg": "navy",
+                "text": "Play",
+                "callback": lambda: set_state(GameStates.GAMEPLAY),
+            },
+            {
+                "pos": (250, 275),
+                "size": (300, 100),
+                "bg": "brown",
+                "text": "Characters",
+                "callback": lambda: set_state(GameStates.CHARACTER_MENU),
+            },
         ]
         buttons = UIGroup(btn_config, Button)
 
         txt_config = [
-            {'pos': (400, 75), 'angle': -30, 'fg': 'yellow',
-             'text_var': lambda: player.character.name}
+            {
+                "pos": (400, 75),
+                "angle": -30,
+                "fg": "yellow",
+                "text_var": lambda: player.character.name,
+            }
         ]
         texts = UIGroup(txt_config, Text)
 
@@ -48,24 +60,39 @@ class CharacterMenu(Scene):
         menu_group.add(menu)
 
         btn_config = [
-            {'pos': (50, 200), 'size': (50, 30),
-             'bg': 'grey50', 'text': '<<<',
-             'callback': lambda: menu.prev()},
-            {'pos': (450, 200), 'size': (50, 30),
-             'bg': 'grey50', 'text': '>>>',
-             'callback': lambda: menu.next()},
-            {'pos': (250, 350), 'size': (100, 50),
-             'bg': 'darkgreen', 'text': 'Select',
-             'callback': lambda: (
-                 player.set_character(menu.current_item),
-                 set_state(GameStates.MAIN_MENU)
-             )}
+            {
+                "pos": (50, 200),
+                "size": (50, 30),
+                "bg": "grey50",
+                "text": "<<<",
+                "callback": lambda: menu.prev(),
+            },
+            {
+                "pos": (450, 200),
+                "size": (50, 30),
+                "bg": "grey50",
+                "text": ">>>",
+                "callback": lambda: menu.next(),
+            },
+            {
+                "pos": (250, 350),
+                "size": (100, 50),
+                "bg": "darkgreen",
+                "text": "Select",
+                "callback": lambda: (
+                    player.set_character(menu.current_item),
+                    set_state(GameStates.MAIN_MENU),
+                ),
+            },
         ]
         buttons = UIGroup(btn_config, Button)
 
         txt_config = [
-            {'pos': (250, 50), 'fg': 'yellow',
-             'text_var': lambda: menu.current_item.name}
+            {
+                "pos": (250, 50),
+                "fg": "yellow",
+                "text_var": lambda: menu.current_item.name,
+            }
         ]
         texts = UIGroup(txt_config, Text)
         super().__init__(buttons, texts, menu_group)

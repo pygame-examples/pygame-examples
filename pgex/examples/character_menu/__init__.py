@@ -31,8 +31,8 @@ class Game:
 
     def _process(self):
         self.clock.tick(60)
-        self.screen.fill('grey10')
- 
+        self.screen.fill("grey10")
+
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
@@ -49,6 +49,5 @@ class Game:
         cls.current_state = state
 
 
-if __name__ == '__main__':
-    game = Game()
-    game.run()
+game = Game()
+game.run()

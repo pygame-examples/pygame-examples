@@ -14,18 +14,19 @@ async def main():
     clock = pygame.time.Clock()
 
     horizontal_slider = HorizontalSlider(
-        pygame.Rect(50, 180, 400, 40), step=10,
-        callback=lambda val: pygame.mixer.music.set_volume(val / 100)
+        pygame.Rect(50, 180, 400, 40),
+        step=10,
+        callback=lambda val: pygame.mixer.music.set_volume(val / 100),
     )
     horizontal_slider.value = 10
 
-    pygame.mixer.music.load('./horizontal_slider/Hooky with Sloane - Bird Creek.mp3')
+    pygame.mixer.music.load("./horizontal_slider/Hooky with Sloane - Bird Creek.mp3")
     pygame.mixer.music.play(loops=-1)
 
     running = True
     while running:
         clock.tick(60)
-        screen.fill('black')
+        screen.fill("black")
 
         events = pygame.event.get()
         for event in events:
@@ -43,5 +44,5 @@ def run():
     asyncio.run(main())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run()
