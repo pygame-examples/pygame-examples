@@ -2,6 +2,7 @@ import pygame
 
 from .projectile import Projectile
 
+
 def main():
     pygame.init()
     screen = pygame.display.set_mode((500, 400))

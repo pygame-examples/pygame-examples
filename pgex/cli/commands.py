@@ -40,9 +40,7 @@ def view(name: str) -> None:
 @click.option("--name", "-n", is_flag=False, flag_value="", help="Name of the example")
 def run(name: str) -> None:
     if not name:
-        example_names = os.listdir(
-            user_path + "/examples/"
-        ) 
+        example_names = os.listdir(user_path + "/examples/")
         output.list_options(OutputStyle.RANDOM_PERIOD, example_names)
 
         try:
@@ -56,7 +54,6 @@ def run(name: str) -> None:
         main = importlib.import_module(f"pgex.examples.{name}.main")
     except ImportError as err:
         click.echo(err)
-        output.error(ImportError, "This example requires the above module to be installed.")
-    
-
-
+        output.error(
+            ImportError, "This example requires the above module to be installed."
+        )

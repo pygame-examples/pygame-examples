@@ -79,6 +79,7 @@ class UIGroup(pygame.sprite.Group):
             element = self.element(dct)
             self.add(element)
 
+
 class CarouselMenu(pygame.sprite.Sprite):
     def __init__(
         self,
