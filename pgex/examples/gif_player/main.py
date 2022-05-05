@@ -2,6 +2,7 @@ import asyncio
 import os
 
 import pygame
+
 from .gif_player import GIFPlayer
 
 
