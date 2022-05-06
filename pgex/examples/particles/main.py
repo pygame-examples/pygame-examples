@@ -6,28 +6,24 @@ import random
 import asyncio
 
 
-def create_particles(
-        particle_list: list
-    ):
+def create_particles(particle_list: list):
     """Function that creates a new particle"""
 
     particle_list.append(
         p.Particle(
-            pygame.mouse.get_pos(),                     # pos
-            10,                                         # radius
-            random.uniform(0.4, 0.5),                   # radius speed
-            pygame.Vector2(random.uniform(-5,5), 7),    # vel
-            1                                           # gravity
+            pygame.mouse.get_pos(),  # pos
+            10,  # radius
+            random.uniform(0.4, 0.5),  # radius speed
+            pygame.Vector2(random.uniform(-5, 5), 7),  # vel
+            1,  # gravity
         )
     )
 
 
 def update_particles(
-        particle_list: List[p.Particle],
-        screen       : pygame.Surface,
-        dt           : float
-    ):
-    
+    particle_list: List[p.Particle], screen: pygame.Surface, dt: float
+):
+
     """Function that updates particles"""
 
     for particle in particle_list:
@@ -38,8 +34,8 @@ def update_particles(
 
 
 async def main():
-    screen = pygame.display.set_mode((600,500))
-    pygame.display.set_caption('Particles!')
+    screen = pygame.display.set_mode((600, 500))
+    pygame.display.set_caption("Particles!")
 
     particles = []
     last = time.perf_counter()
@@ -51,11 +47,10 @@ async def main():
             if event.type == pygame.QUIT:
                 raise SystemExit
 
-        screen.fill('black')
+        screen.fill("black")
 
         create_particles(particles)
         update_particles(particles, screen, dt)
-
 
         pygame.display.flip()
         await asyncio.sleep(0)
