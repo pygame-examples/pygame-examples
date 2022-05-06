@@ -19,14 +19,12 @@ def main():
 def view(name: str) -> None:
     """
     View example's source code on https::/github.dev/
-    
+
     Parameters:
         name: Name of the example.
     """
     if not name:
-        example_names = os.listdir(
-            USER_PATH + "/examples/"
-        )
+        example_names = os.listdir(USER_PATH + "/examples/")
         output.list_options(OutputStyle.RAINBOW_BOX, example_names)
 
         try:
