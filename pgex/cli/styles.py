@@ -9,6 +9,7 @@ class OutputStyle(Enum):
     Enum containing different output styles
     to output text to the console.
     """
+
     RAINBOW_BOX = (
         "[n]",
         itertools.cycle(
@@ -26,9 +27,12 @@ class OutputStyle(Enum):
             )
         ),
     )
-    RANDOM_BOX = ("[n]", itertools.cycle(
+    RANDOM_BOX = (
+        "[n]",
+        itertools.cycle(
             random.sample(list(Fore.__dict__.values()), len(Fore.__dict__))
-        ))
+        ),
+    )
     PLAIN_BOX = ("[n]", "")
 
     RAINBOW_PERIOD = ("n.", RAINBOW_BOX[1])

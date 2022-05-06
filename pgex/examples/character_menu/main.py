@@ -47,4 +47,3 @@ class Game:
     @classmethod
     def set_state(cls, state: GameStates) -> None:
         cls.current_state = state
-        

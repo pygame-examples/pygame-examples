@@ -7,7 +7,7 @@ from pgex.cli.styles import OutputStyle
 
 def list_options(output_style: OutputStyle, options: Iterable) -> None:
     """
-    List options. 
+    List options.
 
     Parameters:
         output_style: Style in which output will be made.
