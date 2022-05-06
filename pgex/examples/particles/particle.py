@@ -1,13 +1,13 @@
-import pygame
-from pygame import Vector2
 import abc
 import random
 from typing import List
 
+import pygame
+from pygame import Vector2
+
 
 class Entity(abc.ABC):
     def __init__(self, pos: List[int]):
-
         """Simple Entity class."""
 
         self.pos = pygame.Vector2(pos)
@@ -24,7 +24,6 @@ class Particle(Entity):
         vel: Vector2 = Vector2(random.randrange(-5, 5), 7),
         gravity: float = 1,
     ):
-
         super().__init__(pos)
         self.radius = radius
         self.radius_speed = radius_speed
@@ -34,13 +33,11 @@ class Particle(Entity):
         self.gravity = gravity
 
     def draw(self, display: pygame.Surface):
-
         """Function that draws particles on a pygame.Surface."""
 
         pygame.draw.circle(display, "white", self.pos, self.radius)
 
     def update(self, display: pygame.Surface, dt: float):
-
         """Function that updates the particle."""
 
         # increase vel.y so particle goes down exponentially
