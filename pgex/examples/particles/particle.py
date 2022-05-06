@@ -6,60 +6,60 @@ from typing import List
 
 
 class Entity(abc.ABC):
-	def __init__(self,
-			pos: List[int]
-		):
+    def __init__(self,
+            pos: List[int]
+        ):
 
-		"""Simple Entity class."""
+        """Simple Entity class."""
 
-		self.pos = pygame.Vector2(pos)
+        self.pos = pygame.Vector2(pos)
 
 
 class Particle(Entity):
-	"""Customizable particle class."""
-	
-	def __init__(self,
-			pos    		: List[int],
-			radius 		: int     = 10,
-			radius_speed: int 	  = 0.5,
-			vel     	: Vector2 = Vector2(random.randrange(-5, 5), 7),
-			gravity 	: float   = 1
-		):
+    """Customizable particle class."""
+    
+    def __init__(self,
+            pos         : List[int],
+            radius      : int     = 10,
+            radius_speed: int     = 0.5,
+            vel         : Vector2 = Vector2(random.randrange(-5, 5), 7),
+            gravity     : float   = 1
+        ):
 
-		super().__init__(pos)
-		self.radius  = radius
-		self.radius_speed = radius_speed
-		self.vel = vel
-		# flip the y velocity so the particle goes up and then fall
-		self.vel.y = -self.vel.y
-		self.gravity = gravity
-
-
-	def draw(self,
-			display: pygame.Surface
-		):
-
-		"""Function that draws particles on a pygame.Surface."""
-
-		pygame.draw.circle(display, 'white', self.pos, self.radius)
+        super().__init__(pos)
+        self.radius  = radius
+        self.radius_speed = radius_speed
+        self.vel = vel
+        # flip the y velocity so the particle goes up and then fall
+        self.vel.y = -self.vel.y
+        self.gravity = gravity
 
 
-	def update(self,
-			display: pygame.Surface,
-			dt     : float
-		):
+    def draw(self,
+            display: pygame.Surface
+        ):
 
-		"""Function to update the particle."""
+        """Function that draws particles on a pygame.Surface."""
 
-		# increase vel.y so particle goes down exponentially
-		self.vel.y += self.gravity * dt
+        pygame.draw.circle(display, 'white', self.pos, self.radius)
 
-		# update particle position
-		self.pos.x += self.vel.x * dt
-		self.pos.y += self.vel.y * dt
 
-		# decrease the radius
-		self.radius -= self.radius_speed * dt
+    def update(self,
+            display: pygame.Surface,
+            dt     : float
+        ):
 
-		# draw the particle
-		self.draw(display)
+        """Function to update the particle."""
+
+        # increase vel.y so particle goes down exponentially
+        self.vel.y += self.gravity * dt
+
+        # update particle position
+        self.pos.x += self.vel.x * dt
+        self.pos.y += self.vel.y * dt
+
+        # decrease the radius
+        self.radius -= self.radius_speed * dt
+
+        # draw the particle
+        self.draw(display)
