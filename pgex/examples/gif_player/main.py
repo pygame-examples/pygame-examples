@@ -5,7 +5,6 @@ import pygame
 
 from .gif_player import GIFPlayer
 
-
 WIDTH, HEIGHT = 500, 400
 
 pygame.init()
@@ -16,7 +15,7 @@ async def main():
     clock = pygame.time.Clock()
 
     background_gif = GIFPlayer(
-        os.path.join(os.path.dirname(__file__), "image.gif"),
+        os.path.join(os.path.dirname(__file__), "assets/image.gif"),
         size=(WIDTH, HEIGHT),
         exclude=(0,),
     )
