@@ -20,9 +20,7 @@ def create_particles(particle_list: list):
     )
 
 
-def update_particles(
-    particle_list: List[Particle], screen: pygame.Surface, dt: float
-):
+def update_particles(particle_list: List[Particle], screen: pygame.Surface, dt: float):
 
     """Function that updates particles"""
 
