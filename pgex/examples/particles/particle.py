@@ -41,7 +41,7 @@ class Particle(Entity):
 
     def update(self, display: pygame.Surface, dt: float):
 
-        """Function to update the particle."""
+        """Function that updates the particle."""
 
         # increase vel.y so particle goes down exponentially
         self.vel.y += self.gravity * dt
