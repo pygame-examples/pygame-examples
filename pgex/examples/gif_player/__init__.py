@@ -1,1 +1,3 @@
-import pgex.examples.gif_player.main
+from .main import run
+
+run()

@@ -1,4 +1,3 @@
-import horizontal_slider.main
+from .main import run
 
-
-horizontal_slider.main.run()
+run()

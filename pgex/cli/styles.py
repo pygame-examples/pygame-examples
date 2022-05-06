@@ -4,8 +4,11 @@ from colorama import Fore
 import random
 
 
-# TODO: Fill in
-class OutputStyle:
+class OutputStyle(Enum):
+    """
+    Enum containing different output styles
+    to output text to the console.
+    """
     RAINBOW_BOX = (
         "[n]",
         itertools.cycle(
@@ -23,14 +26,14 @@ class OutputStyle:
             )
         ),
     )
-    RANDOM_BOX = "[n]"
-    PLAIN_BOX = "[n]"
+    RANDOM_BOX = ("[n]", itertools.cycle(
+            random.sample(list(Fore.__dict__.values()), len(Fore.__dict__))
+        ))
+    PLAIN_BOX = ("[n]", "")
 
-    RAINBOW_PERIOD = "."
+    RAINBOW_PERIOD = ("n.", RAINBOW_BOX[1])
     RANDOM_PERIOD = (
         "n.",
-        itertools.cycle(
-            random.sample(list(Fore.__dict__.values()), len(Fore.__dict__))
-        ),
+        RANDOM_BOX[1],
     )
-    PLAIN_PERIOD = "."
+    PLAIN_PERIOD = ("n.", "")
