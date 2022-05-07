@@ -17,8 +17,7 @@ def list_options(output_style: OutputStyle, options: Iterable) -> None:
         output_prefix = output_style.value[0].replace("n", str(n))
         output_color = next(output_style.value[1])
         content = f"{output_color} {output_prefix} {option}"
-        click.echo(content)
-        print(Style.RESET_ALL, end="")
+        click.echo(content + Style.RESET_ALL)
 
 
 def error(error_type, msg, end=False) -> None:
