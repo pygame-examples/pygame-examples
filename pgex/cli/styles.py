@@ -4,6 +4,9 @@ from colorama import Fore
 import random
 
 
+del Fore.__dict__["BLACK"]
+
+
 class OutputStyle(Enum):
     """
     Enum containing different output styles
