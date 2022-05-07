@@ -1,4 +1,5 @@
 import asyncio
+import os
 
 import pygame
 
@@ -20,7 +21,11 @@ async def main():
     )
     horizontal_slider.value = 10
 
-    pygame.mixer.music.load("./horizontal_slider/Hooky with Sloane - Bird Creek.mp3")
+    pygame.mixer.music.load(
+        os.path.join(
+            os.path.dirname(__file__), "assets/Hooky with Sloane - Bird Creek.mp3"
+        )
+    )
     pygame.mixer.music.play(loops=-1)
 
     running = True

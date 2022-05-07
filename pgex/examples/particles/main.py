@@ -1,9 +1,10 @@
-import pygame
-import time
-from .particle import Particle
-from typing import List
-import random
 import asyncio
+import random
+import time
+from typing import List
+import pygame
+
+from .particle import Particle
 
 
 def create_particles(particle_list: list):
