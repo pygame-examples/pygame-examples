@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://media.discordapp.net/attachments/972445332476665869/972468282802176010/logo_1.png?width=250&height=250" />
+  <img src="https://media.discordapp.net/attachments/972467177624072263/972555155822239824/logo4.png?width=250&height=250" />
   <br/>
   <b>A bunch of well crafted PyGame examples.</b>
   <br/>
