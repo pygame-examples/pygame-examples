@@ -2,7 +2,6 @@ import asyncio
 import random
 import time
 from typing import List
-
 import pygame
 
 from .particle import Particle
@@ -23,6 +22,7 @@ def create_particles(particle_list: list):
 
 
 def update_particles(particle_list: List[Particle], screen: pygame.Surface, dt: float):
+
     """Function that updates particles"""
 
     for particle in particle_list:
