@@ -1,6 +1,6 @@
 import pygame
 import time
-import particle as p
+from .particle import Particle
 from typing import List
 import random
 import asyncio
@@ -10,7 +10,7 @@ def create_particles(particle_list: list):
     """Function that creates a new particle"""
 
     particle_list.append(
-        p.Particle(
+        Particle(
             pygame.mouse.get_pos(),  # pos
             10,  # radius
             random.uniform(0.4, 0.5),  # radius speed
@@ -20,9 +20,7 @@ def create_particles(particle_list: list):
     )
 
 
-def update_particles(
-    particle_list: List[p.Particle], screen: pygame.Surface, dt: float
-):
+def update_particles(particle_list: List[Particle], screen: pygame.Surface, dt: float):
 
     """Function that updates particles"""
 
