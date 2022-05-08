@@ -1,7 +1,9 @@
-import pygame
-from .ball import Ball
-import time
 import asyncio
+import time
+
+import pygame
+
+from .ball import Ball
 
 
 async def main():

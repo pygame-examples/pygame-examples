@@ -1,9 +1,9 @@
 import pygame
 
+from .characters import characters
 from .enums import GameStates
 from .player import player
-from .UI import UIGroup, Button, Text, CarouselMenu
-from .characters import characters
+from .UI import Button, CarouselMenu, Text, UIGroup
 
 
 class Scene:

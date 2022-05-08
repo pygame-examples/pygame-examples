@@ -1,4 +1,5 @@
 import pygame
+
 from ._types import *
 
 

@@ -1,3 +1,10 @@
-import os
+"""
+This file is a part of the 'Pygame Examples (pgex)' source code.
+The source code is distributed under the MIT license.
 
-USER_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)))
+Defines a few globally used variables.
+"""
+import pathlib
+
+PGEX_DIR = pathlib.Path(__file__).parent
+EXAMPLES_DIR = PGEX_DIR / "examples"

@@ -1,0 +1,51 @@
+name: Run pylint and black
+
+on:
+  # runs CI only on push/PR to main, and only when code in pgex is changed
+  push:
+    branches: [ main ]
+    paths:
+    - 'pgex/**'
+
+  pull_request:
+    branches: [ main ]
+    paths:
+    - 'pgex/**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false  # if a particular matrix build fails, don't skip the rest
+      matrix:
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python v${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install pylint black
+
+    - name: Linting code with black
+      run: black pgex --check
+
+    - name: Analysing CLI with pylint
+      run: pylint --recursive=y --fail-under=10 pgex
+    
+    - name: Analysing Examples with pylint
+      # TODO: be stricter with the score here
+      run: |
+        for dir in pgex/examples/*/
+        do
+          cd $dir
+          pylint --recursive=y --fail-under=7 .
+          cd ../../../
+        done
+        
