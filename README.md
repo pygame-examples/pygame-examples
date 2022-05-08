@@ -4,9 +4,10 @@
   <b>A bunch of well crafted PyGame examples.</b>
   <br/>
   <br/>
+	<a href="https://github.com/Matiiss/pygame_examples/actions/workflows/lint.yml"><img src="https://img.shields.io/github/workflow/status/Matiiss/pygame_examples/Run%20pylint%20and%20black"></a>  
   <a href="https://discord.gg/DCGyWedkde"><img src="https://img.shields.io/discord/972445332476665866"/></a>
-	<a href="https://github.com/Matiiss/pygame_examples/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/Matiiss/pygame_examples"></a>  
 	<a href="https://github.com/Matiiss/pygame_examples/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Matiiss/pygame_examples"></a>
+	<a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-brightgreen"></a>
   
 </div>
 
