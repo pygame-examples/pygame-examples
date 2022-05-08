@@ -1,1 +1,3 @@
-from projectile_to_position.main import main
+from .main import run
+
+run()
