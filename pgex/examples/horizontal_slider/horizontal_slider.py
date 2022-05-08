@@ -1,4 +1,5 @@
 import math
+import typing as t
 
 import pygame
 
@@ -50,7 +51,7 @@ class HorizontalSlider:
                 self.x, self.y = self.clamp_rail(event.pos)
                 self.value = round(self.value / self.step) * self.step
 
-    def collision(self, pos: tuple[int, int]) -> bool:
+    def collision(self, pos: t.Tuple[int, int]) -> bool:
         """This is to detect point-circle collision, not needed for doing rect collisions."""
         mx, my = pos
         dx, dy = abs(self.x - mx), abs(self.y - my)

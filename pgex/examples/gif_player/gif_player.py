@@ -1,20 +1,20 @@
 import itertools
-import typing as t
 import pathlib
+import typing as t
 
-import pygame
 import PIL.Image
+import pygame
 
 
 class GIFPlayer:
     def __init__(
         self,
-        path: str | pathlib.Path,
+        path: t.Optional[str, pathlib.Path],
         fps: int = 30,
-        pos: t.Sequence[int] | pygame.Vector2 = (0, 0),
-        size: t.Sequence[int] | None = None,
-        exclude: t.Sequence[int] | None = None,
-    ):
+        pos: t.Union[t.Sequence[int], pygame.Vector2] = (0, 0),
+        size: t.Optional[t.Sequence[int]] = None,
+        exclude: t.Optional[t.Sequence[int]] = None,
+    ) -> None:
         """Initializes an instance of GIFPlayer
 
         :param path: path to the GIF
@@ -31,8 +31,8 @@ class GIFPlayer:
                     continue
                 gif.seek(frame)
                 surface = pygame.image.frombuffer(
-                    gif.tobytes(), gif.size, gif.mode
-                )  # NOQA
+                    gif.tobytes(), gif.size, gif.mode  # NOQA
+                )
                 if size is not None:
                     surface = pygame.transform.scale(surface, size)
                 frames.append(surface)
