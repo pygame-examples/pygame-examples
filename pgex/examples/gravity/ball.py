@@ -1,6 +1,12 @@
+"""
+This file is a part of the 'Pygame Examples (pgex)' source code.
+The source code is distributed under the MIT license.
+
+Module that contains the Ball class
+"""
 import pygame
 
-from ._types import *
+from ._types import ColorValue
 
 
 class Ball:
@@ -27,14 +33,20 @@ class Ball:
         self.gravity = gravity
         self.radius = radius
         self.fall_speed = 0
-        self.color = "red"
+        self.color = color
 
-    def draw(self, display: pygame.Surface):
-        pygame.draw.circle(display, self.color, self.pos, self.radius)
+    def draw(self, screen: pygame.Surface):
+        """
+        Draw the ball on the screen
+        """
+        pygame.draw.circle(screen, self.color, self.pos, self.radius)
 
-    def update(self, display: pygame.Surface, dt: float):
+    def update(self, screen: pygame.Surface, dt: float):
+        """
+        Update ball's position, draw it on the screen
+        """
         # increase fall_speed so the ball falls exponentially
         self.fall_speed += self.gravity * dt
         self.pos.y += self.fall_speed * dt
 
-        self.draw(display)
+        self.draw(screen)

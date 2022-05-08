@@ -1,3 +1,9 @@
+"""
+This file is a part of the 'Pygame Examples (pgex)' source code.
+The source code is distributed under the MIT license.
+
+The main module
+"""
 import asyncio
 import time
 
@@ -7,6 +13,9 @@ from .ball import Ball
 
 
 async def main():
+    """
+    Function that contains game variables and the game loop
+    """
     screen_width, screen_height = 600, 500
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("Gravity! (press a mouse button to spawn a ball)")
@@ -27,7 +36,7 @@ async def main():
             if event.type == pygame.QUIT:
                 raise SystemExit
 
-            elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN:
                 # create a Ball if a mouse button is clicked
                 ball_list.append(
                     Ball(
@@ -54,6 +63,9 @@ async def main():
 
 
 def run():
+    """
+    Function that runs the example
+    """
     asyncio.run(main())
 
 
