@@ -32,20 +32,25 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install pylint black
+        python -m pip install -r requirements.txt
 
     - name: Linting code with black
       run: black pgex --check
 
     - name: Analysing CLI with pylint
       run: pylint --recursive=y --fail-under=10 pgex
-    
+
     - name: Analysing Examples with pylint
       # TODO: be stricter with the score here
       run: |
         for dir in pgex/examples/*/
         do
-          cd $dir
-          pylint --recursive=y --fail-under=7 .
-          cd ../../../
+          requirements_txt=${dir}/requirements.txt
+          if [ -f "$requirements_txt" ]; then
+            echo Installing requirements of $dir
+            python -m pip install -r $requirements_txt
+          fi
+          echo Running pylint on $dir
+          pylint --recursive=y --fail-under=2 $dir
         done
-        
+
