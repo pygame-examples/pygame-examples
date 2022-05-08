@@ -1,6 +1,11 @@
-import pygame
+"""
+Module that contains the ColoredRect class
+"""
 import itertools
 from typing import Iterable
+
+import pygame
+
 from ._types import ColorValue
 
 
@@ -20,7 +25,7 @@ class ColoredRect:
         """
 
         self.rect = pygame.Rect(pos, size)
-        # create a cycle so the colors change infinitely
+        # Create a cycle so the colors change infinitely
         self.color_cycle = itertools.cycle(colors)
         self.color = next(self.color_cycle)
 
@@ -31,4 +36,7 @@ class ColoredRect:
         self.color = next(self.color_cycle)
 
     def draw(self, screen: pygame.Surface):
+        """
+        Draw the rectangle on the screen
+        """
         pygame.draw.rect(screen, self.color, self.rect)
