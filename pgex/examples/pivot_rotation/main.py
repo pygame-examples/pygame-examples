@@ -17,7 +17,8 @@ FPS = 60
 
 class Image:
     FILE_NAME = "image.png"
-    IMAGE_RECT_POS = (0, 0) # Position of the topleft of the original image
+    IMAGE_RECT_POS = (0, 0)  # Position of the topleft of the original image
+
     def __init__(self, screenw, screenh):
         self.screenw, self.screenh = screenw, screenh
 
@@ -25,23 +26,15 @@ class Image:
 
         self.load_image()
 
-        self.center_pos = pygame.Vector2(
-            self.screenw / 2, self.screenh / 2
-            )
-        self.pivot_pos = pygame.Vector2(
-            self.image_rect.w / 2, self.image_rect.h / 2
-            )
+        self.center_pos = pygame.Vector2(self.screenw / 2, self.screenh / 2)
+        self.pivot_pos = pygame.Vector2(self.image_rect.w / 2, self.image_rect.h / 2)
 
         self.angle = 0
         self.is_dragged = False
 
     def load_image(self):
-        self.image = pygame.image.load(
-            path.join(path.abspath("."), self.FILE_NAME)
-            )
-        self.image_rect = self.image.get_rect(
-            topleft = self.IMAGE_RECT_POS
-            )
+        self.image = pygame.image.load(path.join(path.abspath("."), self.FILE_NAME))
+        self.image_rect = self.image.get_rect(topleft=self.IMAGE_RECT_POS)
 
     def events(self, event):
         mpos = pygame.mouse.get_pos()
@@ -54,8 +47,8 @@ class Image:
 
         vec = pygame.Vector2(
             self.pivot_pos.x - self.image_rect.centerx,
-            self.pivot_pos.y - self.image_rect.centery
-            )
+            self.pivot_pos.y - self.image_rect.centery,
+        )
         vec.rotate_ip(self.angle)
         self.transformed_rect.center = self.center_pos - vec
 
@@ -87,29 +80,21 @@ class Image:
             self.angle += 360
 
     def transform(self):
-        self.transformed_image = pygame.transform.rotate(
-            self.image, -self.angle
-            )
+        self.transformed_image = pygame.transform.rotate(self.image, -self.angle)
         self.transformed_rect = self.transformed_image.get_rect()
 
     def create_text(self):
         self.text_pivot_pos = self.font.render(
-            f"Origin: {self.pivot_pos.x}, {self.pivot_pos.y}",
-            True,
-            "Magenta"
-            )
+            f"Origin: {self.pivot_pos.x}, {self.pivot_pos.y}", True, "Magenta"
+        )
         self.text_pivot_pos_rect = self.text_pivot_pos.get_rect(
-            topright = (self.screenw, 0)
-            )
+            topright=(self.screenw, 0)
+        )
 
-        self.text_angle = self.font.render(
-            f"Angle: {int(self.angle)}",
-            True,
-            "Magenta"
-            )
+        self.text_angle = self.font.render(f"Angle: {int(self.angle)}", True, "Magenta")
         self.text_angle_rect = self.text_angle.get_rect(
-            topright = (self.screenw, self.text_pivot_pos_rect.bottom)
-            )
+            topright=(self.screenw, self.text_pivot_pos_rect.bottom)
+        )
 
     def draw_text(self, screen):
         screen.blit(self.text_pivot_pos, self.text_pivot_pos_rect)
@@ -121,12 +106,12 @@ async def main():
     pygame.display.set_caption(CAPTION)
 
     clock = pygame.time.Clock()
-    
+
     running = True
     image = Image(SCREENW, SCREENH)
 
     while running:
-        dt = clock.tick(FPS)/1000 # Clamp the fps at 60 and get the delta time
+        dt = clock.tick(FPS) / 1000  # Clamp the fps at 60 and get the delta time
 
         # The event loop for processing the events
         for event in pygame.event.get():
@@ -138,7 +123,7 @@ async def main():
         image.physics()
 
         # Finally draw everything
-        screen.fill("White") # Clear the screen before drawing
+        screen.fill("White")  # Clear the screen before drawing
         image.draw(screen)
         pygame.display.update()
 
@@ -152,4 +137,4 @@ def run():
 
 
 if __name__ == "__main__":
-        run()
+    run()
