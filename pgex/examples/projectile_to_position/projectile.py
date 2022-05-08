@@ -1,3 +1,5 @@
+import typing as t
+
 import pygame
 
 
@@ -7,7 +9,12 @@ class Projectile(pygame.sprite.Sprite):
     velocity = 5
     max_distance = 200
 
-    def __init__(self, start_pos, target_pos, to_max=True):
+    def __init__(
+        self,
+        start_pos: t.Union[t.Tuple[int, int], pygame.Vector2],
+        target_pos: t.Union[t.Tuple[int, int], pygame.Vector2],
+        to_max: bool = True,
+    ) -> None:
         super().__init__()
         self.start_pos = sp = x0, y0 = pygame.Vector2(start_pos)
         tp = x1, y1 = pygame.Vector2(target_pos)
@@ -20,7 +27,7 @@ class Projectile(pygame.sprite.Sprite):
             self.max_distance = min(self.max_distance, round(sp.distance_to(tp)))
         self.travelled_distance = 0
 
-    def update(self):
+    def update(self) -> None:
         if self.travelled_distance > self.max_distance:
             self.kill()
         self.travelled_distance += self.velocity
