@@ -9,7 +9,7 @@ import pygame
 class GIFPlayer:
     def __init__(
         self,
-        path: t.Optional[str, pathlib.Path],
+        path: t.Union[str, pathlib.Path],
         fps: int = 30,
         pos: t.Union[t.Sequence[int], pygame.Vector2] = (0, 0),
         size: t.Optional[t.Sequence[int]] = None,
