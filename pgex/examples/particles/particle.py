@@ -1,3 +1,9 @@
+"""
+This file is a part of the 'Pygame Examples (pgex)' source code.
+The source code is distributed under the MIT license.
+
+Module that contains the Entity, Particle classes
+"""
 import abc
 import random
 from typing import List
@@ -7,14 +13,22 @@ from pygame import Vector2
 
 
 class Entity(abc.ABC):
-    def __init__(self, pos: List[int]):
-        """Simple Entity class."""
+    """
+    Simple Entity class.
+    """
 
+    def __init__(self, pos: List[int]):
+        """
+        Parameters:
+            pos: Position of the entity
+        """
         self.pos = pygame.Vector2(pos)
 
 
 class Particle(Entity):
-    """Customizable particle class."""
+    """
+    Customizable particle class.
+    """
 
     def __init__(
         self,
@@ -24,6 +38,15 @@ class Particle(Entity):
         vel: Vector2 = Vector2(random.randrange(-5, 5), 7),
         gravity: float = 1,
     ):
+        """
+        Parameters:
+            pos: Position of the particle
+            radius: Radius of the particle
+            radius_speed: Decreasing speed of the particle's radius
+            vel: How far does the particle move (x, y)
+            gravity: Fall speed of the particle
+        """
+
         super().__init__(pos)
         self.radius = radius
         self.radius_speed = radius_speed
@@ -33,12 +56,16 @@ class Particle(Entity):
         self.gravity = gravity
 
     def draw(self, display: pygame.Surface):
-        """Function that draws particles on a pygame.Surface."""
+        """
+        Function that draws particles on a pygame.Surface.
+        """
 
         pygame.draw.circle(display, "white", self.pos, self.radius)
 
     def update(self, display: pygame.Surface, dt: float):
-        """Function that updates the particle."""
+        """
+        Function that updates the particle.
+        """
 
         # increase vel.y so particle goes down exponentially
         self.vel.y += self.gravity * dt

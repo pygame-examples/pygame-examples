@@ -1,3 +1,9 @@
+"""
+This file is a part of the 'Pygame Examples (pgex)' source code.
+The source code is distributed under the MIT license.
+
+The main module
+"""
 import asyncio
 import random
 import time
@@ -9,7 +15,9 @@ from .particle import Particle
 
 
 def create_particles(particle_list: list):
-    """Function that creates a new particle"""
+    """
+    Function that creates a new particle
+    """
 
     particle_list.append(
         Particle(
@@ -23,8 +31,9 @@ def create_particles(particle_list: list):
 
 
 def update_particles(particle_list: List[Particle], screen: pygame.Surface, dt: float):
-
-    """Function that updates particles"""
+    """
+    Function that updates particles
+    """
 
     for particle in particle_list:
         if particle.radius <= 0:
@@ -34,6 +43,9 @@ def update_particles(particle_list: List[Particle], screen: pygame.Surface, dt: 
 
 
 async def main():
+    """
+    Function that contains game variables and the game loop
+    """
     screen = pygame.display.set_mode((600, 500))
     pygame.display.set_caption("Particles!")
 
@@ -57,6 +69,9 @@ async def main():
 
 
 def run():
+    """
+    Function that runs the example
+    """
     asyncio.run(main())
 
 
