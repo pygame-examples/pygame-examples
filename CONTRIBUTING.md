@@ -41,12 +41,13 @@
   - After you are done with making your changes, run these two commands:
   	- `git add .`
   	- `git commit -m "short description explaining the changes you made"`
-  Or:
+  - Or:
   	- `git commit -am "short description explaining the changes you made"`
   - Now you can push the code to your fork:
   	- `git push origin feature/issue-n`
   - Go to your fork, and you should see a `Compare and create a pull request` option.
   <img src="https://i.ytimg.com/vi/rgbCcBNZcdQ/maxresdefault.jpg"/>
+  
   - Click on it, and create a pull request. Merge conflicts will be solved by maintainers if necessary. 
   - And there! You just made your first pull request to `pgex`! Now you can wait patiently for it to be reviewd, and hope it gets merged 🤞.
 
