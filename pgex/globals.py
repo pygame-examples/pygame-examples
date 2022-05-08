@@ -4,6 +4,7 @@ The source code is distributed under the MIT license.
 
 Defines a few globally used variables.
 """
+
 import pathlib
 
 PGEX_DIR = pathlib.Path(__file__).parent

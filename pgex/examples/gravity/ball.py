@@ -4,6 +4,7 @@ The source code is distributed under the MIT license.
 
 Module that contains the Ball class
 """
+
 import pygame
 
 from ._types import ColorValue
