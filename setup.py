@@ -36,5 +36,5 @@ setup(
         "Topic :: Games/Entertainment",
         "Intended Audience :: Developers",
     ],
-    entry_points={"console_scripts": ["pge=pge:main"]},
+    entry_points={"console_scripts": ["pgex=pgex:main"]},
 )
