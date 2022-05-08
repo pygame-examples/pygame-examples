@@ -8,6 +8,7 @@ class Image:
     """
     This class contains and handles all the processes related to rotating an image around any given axis.
     """
+
     FILE_NAME = "image.png"
     IMAGE_RECT_POS = (0, 0)  # Position of the topleft of the original image
 
@@ -65,8 +66,10 @@ class Image:
         self.draw_text(screen)
 
     def calc_angle(self):
-        mpos = pygame.Vector2(pygame.mouse.get_pos()) 
-        self.vec = mpos - self.center_pos # The vector joining the axis of rotation and the current position of the mouse
+        mpos = pygame.Vector2(pygame.mouse.get_pos())
+        self.vec = (
+            mpos - self.center_pos
+        )  # The vector joining the axis of rotation and the current position of the mouse
         if self.vec.x == 0:
             if self.vec.y < 0:
                 self.angle = 270
