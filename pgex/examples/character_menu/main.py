@@ -3,7 +3,7 @@ import asyncio
 import pygame
 
 from .enums import GameStates
-from .scenes import MainMenu, CharacterMenu, GamePlay
+from .scenes import CharacterMenu, GamePlay, MainMenu
 
 
 class Game:

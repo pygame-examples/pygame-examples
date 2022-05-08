@@ -5,7 +5,6 @@ import pygame
 from .reddy import Reddy
 from .UI import HorizontalSlider
 
-
 pygame.init()
 
 

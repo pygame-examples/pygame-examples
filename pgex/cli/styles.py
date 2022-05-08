@@ -1,7 +1,15 @@
-from enum import Enum
+"""
+This file is a part of the 'Pygame Examples (pgex)' source code.
+The source code is distributed under the MIT license.
+
+Defines a few styles used by the CLI
+"""
+
 import itertools
-from colorama import Fore
 import random
+from enum import Enum
+
+from colorama import Fore
 
 
 del Fore.__dict__["BLACK"]
