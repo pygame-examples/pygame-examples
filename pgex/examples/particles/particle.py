@@ -4,6 +4,7 @@ The source code is distributed under the MIT license.
 
 Module that contains the Entity, Particle classes
 """
+
 import abc
 import random
 from typing import List
