@@ -5,6 +5,9 @@ import pygame
 
 
 class Image:
+    """
+    This class contains and handles all the processes related to rotating an image around any given axis.
+    """
     FILE_NAME = "image.png"
     IMAGE_RECT_POS = (0, 0)  # Position of the topleft of the original image
 
@@ -22,12 +25,18 @@ class Image:
         self.is_dragged = False
 
     def load_image(self):
+        """
+        Loads the main image and creates a rectangle from it.
+        """
         self.image = pygame.image.load(
             path.join(path.abspath("."), "Assets", self.FILE_NAME)
         )
         self.image_rect = self.image.get_rect(topleft=self.IMAGE_RECT_POS)
 
     def events(self, event):
+        """
+        This function checks for mouse events and if the mouse is pressed inside the source rectangle position of the pivot is changed according to it.
+        """
         mpos = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN and self.image_rect.collidepoint(mpos):
             self.pivot_pos = pygame.Vector2(mpos)
@@ -56,14 +65,15 @@ class Image:
         self.draw_text(screen)
 
     def calc_angle(self):
-        mpos = pygame.Vector2(pygame.mouse.get_pos())
-        self.vec = mpos - self.center_pos
+        mpos = pygame.Vector2(pygame.mouse.get_pos()) 
+        self.vec = mpos - self.center_pos # The vector joining the axis of rotation and the current position of the mouse
         if self.vec.x == 0:
             if self.vec.y < 0:
                 self.angle = 270
             else:
                 self.angle = 90
         else:
+            # The angle made between the vector and the x-axis
             self.angle = math.degrees(math.atan(self.vec.y / self.vec.x))
         if self.vec.x < 0:
             self.angle += 180
