@@ -11,13 +11,13 @@ class Reddy(pygame.sprite.Sprite):
 
     VECTOR = pygame.Vector2(1, 0)
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.image = self.RED_SURF
         self.rect = self.image.get_rect(center=(250, 200))
         self.angle = random.randint(-180, 180)
 
-    def update(self):
+    def update(self) -> None:
         collided = False
         self.rect.move_ip(self.VECTOR.rotate(self.angle) * 3)
         for gr in self.groups():

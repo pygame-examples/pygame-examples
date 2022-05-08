@@ -1,9 +1,11 @@
+import asyncio
+
 import pygame
 
 from .projectile import Projectile
 
 
-def main():
+async def main():
     pygame.init()
     screen = pygame.display.set_mode((500, 400))
     clock = pygame.time.Clock()
@@ -26,3 +28,12 @@ def main():
         projectile_group.update()
         projectile_group.draw(screen)
         pygame.display.flip()
+        await asyncio.sleep(0)
+
+
+def run():
+    asyncio.run(main())
+
+
+if __name__ == "__main__":
+    run()
