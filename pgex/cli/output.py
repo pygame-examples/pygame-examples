@@ -1,7 +1,15 @@
-from webbrowser import Error
+"""
+This file is a part of the 'Pygame Examples (pgex)' source code.
+The source code is distributed under the MIT license.
+
+Defines utility funtions help with CLI outputs
+"""
+
+from typing import Iterable
+
 import click
-from typing import Iterable, Tuple
 from colorama import Fore, Style
+
 from pgex.cli.styles import OutputStyle
 
 
@@ -13,8 +21,8 @@ def list_options(output_style: OutputStyle, options: Iterable) -> None:
         output_style: Style in which output will be made.
         options: An iterable containing options to display.
     """
-    for n, option in enumerate(options):
-        output_prefix = output_style.value[0].replace("n", str(n))
+    for i, option in enumerate(options):
+        output_prefix = output_style.value[0].replace("n", str(i))
         output_color = next(output_style.value[1])
         content = f"{output_color} {output_prefix} {option}"
         click.echo(content)

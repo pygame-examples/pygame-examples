@@ -1,9 +1,9 @@
 import itertools
-import typing as t
 import pathlib
+import typing as t
 
-import pygame
 import PIL.Image
+import pygame
 
 
 class GIFPlayer:

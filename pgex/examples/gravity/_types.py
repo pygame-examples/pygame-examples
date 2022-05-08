@@ -1,4 +1,5 @@
-from typing import Tuple, Union, Sequence
+from typing import Sequence, Tuple, Union
+
 from pygame import Color
 
 # type hint for pygame color

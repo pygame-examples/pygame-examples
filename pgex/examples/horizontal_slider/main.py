@@ -5,7 +5,6 @@ import pygame
 
 from .horizontal_slider import HorizontalSlider
 
-
 WIDTH, HEIGHT = 500, 400
 
 
