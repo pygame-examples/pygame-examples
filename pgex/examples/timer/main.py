@@ -23,12 +23,12 @@ async def main():
     colored_rect = ColoredRect(
         pos=(50, 50),
         size=(500, 400),
-        colors=("lightblue", "lightblue1", "lightblue2", "lightblue3"),
+        colors=("lightblue", "lightblue1", "lightblue2", "lightblue3")
     )
 
     # A custom event that will change the rectangle's color
     color_change_event = pygame.event.custom_type()
-    # Color_change_event will occur every 1000 milliseconds (1 second)
+    # color_change_event will occur every 1000 milliseconds (1 second)
     pygame.time.set_timer(color_change_event, 1000)
 
     while True:
