@@ -7,7 +7,6 @@ Proper global variables
 
 import pygame
 
-
 screen: pygame.Surface
 clock: pygame.time.Clock
 running: bool

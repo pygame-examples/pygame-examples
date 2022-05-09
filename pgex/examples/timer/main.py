@@ -6,6 +6,7 @@ The main module
 """
 
 import asyncio
+
 import pygame
 
 from .colored_rectangle import ColoredRect
