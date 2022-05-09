@@ -53,5 +53,6 @@
 
 
 # Use a consistent coding style 
-  - Before making a commit, make sure to run `black .` at the root of your project directory. This will format the files.
+  - Before making a commit, make sure to run `before_commit.py` at the root of your project directory. This will reformat the files, 
+sort the imports, and check if you have added license header doc-strings, if not it will do so. 
   - This may not however, change your code completely to follow [PEP8](https://peps.python.org/pep-0008/). Following it is mandatory. 
