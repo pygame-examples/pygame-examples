@@ -23,7 +23,7 @@ async def main():
     colored_rect = ColoredRect(
         pos=(50, 50),
         size=(500, 400),
-        colors=("lightblue", "lightblue1", "lightblue2", "lightblue3")
+        colors=("lightblue", "lightblue1", "lightblue2", "lightblue3"),
     )
 
     # A custom event that will change the rectangle's color
