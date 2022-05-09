@@ -11,7 +11,6 @@ from enum import Enum
 
 from colorama import Fore
 
-
 del Fore.__dict__["BLACK"]
 
 
