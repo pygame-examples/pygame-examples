@@ -8,7 +8,7 @@ import asyncio
 import pygame
 
 from .reddy import Reddy
-from .UI import HorizontalSlider
+from .ui import HorizontalSlider
 
 pygame.init()
 

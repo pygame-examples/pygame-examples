@@ -68,7 +68,7 @@ class HorizontalSlider:
         pygame.draw.rect(surface, "grey50", self.rail)
         pygame.draw.circle(surface, "grey75", (self.x, self.y), self.radius)
 
-    def clamp_rail(self, pos: tuple[int, int]) -> tuple[int, int]:
+    def clamp_rail(self, pos: t.Tuple[int, int]) -> t.Tuple[int, int]:
         x, y = pos
         new_x = max(self.rail.left + self.radius, min(x, self.rail.right - self.radius))
         return new_x, self.rail.centery
