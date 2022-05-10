@@ -5,7 +5,6 @@ The source code is distributed under the MIT license.
 Defines a few styles used by the CLI
 """
 
-import itertools
 import random
 from enum import Enum
 
