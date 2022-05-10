@@ -5,7 +5,6 @@ The source code is distributed under the MIT license.
 Defines a few styles used by the CLI
 """
 
-import itertools
 import random
 from enum import Enum
 
@@ -22,10 +21,8 @@ class OutputStyle(Enum):
 
     RAINBOW_BOX = (
         "[n]",
-        itertools.cycle(
+        (
             (
-                Fore.WHITE,
-                Fore.LIGHTWHITE_EX,
                 Fore.LIGHTYELLOW_EX,
                 Fore.YELLOW,
                 Fore.LIGHTGREEN_EX,
@@ -34,14 +31,13 @@ class OutputStyle(Enum):
                 Fore.CYAN,
                 Fore.LIGHTMAGENTA_EX,
                 Fore.MAGENTA,
+                Fore.RED,
             )
         ),
     )
     RANDOM_BOX = (
         "[n]",
-        itertools.cycle(
-            random.sample(list(Fore.__dict__.values()), len(Fore.__dict__))
-        ),
+        random.sample(list(Fore.__dict__.values()), len(Fore.__dict__)),
     )
     PLAIN_BOX = ("[n]", "")
 
