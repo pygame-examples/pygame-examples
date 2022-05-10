@@ -8,6 +8,7 @@
   <a href="https://discord.gg/DCGyWedkde"><img src="https://img.shields.io/discord/972445332476665866"/></a>
 	<a href="https://github.com/Matiiss/pygame_examples/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Matiiss/pygame_examples"></a>
 	<a href="https://github.com/psf/black"><img src="https://img.shields.io/badge/code%20style-black-brightgreen"></a>
+  <img src="https://img.shields.io/tokei/lines/github/Matiiss/pygame_examples">
   
 </div>
 
