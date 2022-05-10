@@ -108,7 +108,7 @@ def view(name: str) -> None:
 
     webbrowser.open(
         "https://github.com/Matiiss/"
-        f"pygame_examples/pgex/examples/blob/main/{name}/main.py"
+        f"pygame_examples/tree/main/pgex/examples/{name}"
     )
 
 
