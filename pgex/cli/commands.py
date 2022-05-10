@@ -107,8 +107,7 @@ def view(name: str) -> None:
         name = _get_user_example_input(OutputStyle.RAINBOW_BOX)
 
     webbrowser.open(
-        "https://github.com/Matiiss/"
-        f"pygame_examples/tree/main/pgex/examples/{name}"
+        "https://github.com/Matiiss/" f"pygame_examples/tree/main/pgex/examples/{name}"
     )
 
 
