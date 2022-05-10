@@ -35,7 +35,7 @@ Most examples should be WASM compatible meaning that they can be run in the brow
 	  - `pgex run` can be used to run any of the available examples
 	    `pgex run -n "example_name"` can be used to directly run the given example
 	    `pgex run --web` can be used to run the example on the browser. All examples are WASM compatible.
-	  - `pgex view` can be used to view the main file for the example on [github.dev](https://github.dev/Matiiss/pygame_examples)
+	  - `pgex view` can be used to view the main file for the example on [github.com](https://github.com/Matiiss/pygame_examples)
 	    `pgex view -n "example_name"` can be used to run a specific example.
 
 # Contributing
