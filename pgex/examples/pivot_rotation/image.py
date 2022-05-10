@@ -35,7 +35,7 @@ class Image:
         Loads the main image and creates a rectangle from it.
         """
         self.image = pygame.image.load(
-            path.join(path.abspath("."), "assets", self.FILE_NAME)
+            path.join(path.dirname(__file__), "assets", self.FILE_NAME)
         )
         self.image_rect = self.image.get_rect(topleft=self.IMAGE_RECT_POS)
 
