@@ -32,13 +32,13 @@ class OutputStyle(Enum):
                 Fore.CYAN,
                 Fore.LIGHTMAGENTA_EX,
                 Fore.MAGENTA,
-                Fore.RED
+                Fore.RED,
             )
         ),
     )
     RANDOM_BOX = (
         "[n]",
-            random.sample(list(Fore.__dict__.values()), len(Fore.__dict__)),
+        random.sample(list(Fore.__dict__.values()), len(Fore.__dict__)),
     )
     PLAIN_BOX = ("[n]", "")
 

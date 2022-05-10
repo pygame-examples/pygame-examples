@@ -5,17 +5,19 @@ The source code is distributed under the MIT license.
 Defines utility funtions help with CLI outputs
 """
 
+import os
 from typing import Iterable, Optional
 
 import click
-from colorama import Fore, Style
 import colorama
-import os
+from colorama import Fore, Style
 
 from pgex.cli.styles import OutputStyle
 
 
-def list_options(output_style: OutputStyle, options: Iterable, highlight_index: Optional[int] = None) -> None:
+def list_options(
+    output_style: OutputStyle, options: Iterable, highlight_index: Optional[int] = None
+) -> None:
     """
     List options.
 
@@ -60,8 +62,9 @@ def color_output(msg: str, color) -> None:
     """
     click.echo(f"{color}{msg}{colorama.Style.RESET_ALL}")
 
+
 def cls():
     """
     Cross platform function to clear console.
     """
-    os.system('cls||clear')
+    os.system("cls||clear")

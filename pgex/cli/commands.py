@@ -23,10 +23,11 @@ def main():
     main CLI function
     """
 
+
 def _get_sublists(lst, n):
     """
-    Given a list of multiple elements, convert this 
-    into a list of multiple sublists each containing n number of elements 
+    Given a list of multiple elements, convert this
+    into a list of multiple sublists each containing n number of elements
     from the original list in order.
     The last sublist may not contain the same number of elements/contain the excess elements.
 
@@ -34,7 +35,8 @@ def _get_sublists(lst, n):
         lst: List to create sublists out of.
         n: Maximum size of sublist.
     """
-    return [lst[i*n:i*n+n] for i in range(-(-len(lst) // n))]
+    return [lst[i * n : i * n + n] for i in range(-(-len(lst) // n))]
+
 
 def _get_user_example_input(output_style: OutputStyle):
     """
@@ -46,7 +48,9 @@ def _get_user_example_input(output_style: OutputStyle):
     MAX_INDEX = 8
     page_index = 0
 
-    example_names = _get_sublists([i.name for i in EXAMPLES_DIR.iterdir()], MAX_INDEX + 1)
+    example_names = _get_sublists(
+        [i.name for i in EXAMPLES_DIR.iterdir()], MAX_INDEX + 1
+    )
     MAX_PAGE_INDEX = len(example_names) - 1
     highlight_index = [0 for _ in range(MAX_PAGE_INDEX + 1)]
     output.list_options(output_style, example_names[page_index])
@@ -56,13 +60,17 @@ def _get_user_example_input(output_style: OutputStyle):
         click.echo("Enter 'ctrl + c' to quit.")
         click.echo("Use arrow keys to move.\n")
 
-        output.color_output(f"\t Page {page_index}/{MAX_PAGE_INDEX}\n", colorama.Fore.LIGHTRED_EX)
-        output.list_options(output_style, example_names[page_index], highlight_index[page_index])
+        output.color_output(
+            f"\t Page {page_index}/{MAX_PAGE_INDEX}\n", colorama.Fore.LIGHTRED_EX
+        )
+        output.list_options(
+            output_style, example_names[page_index], highlight_index[page_index]
+        )
 
         event = keyboard.read_event()
-        
+
         if event.event_type == keyboard.KEY_DOWN:
-            if event.name == 'up':
+            if event.name == "up":
                 highlight_index[page_index] -= 1
                 if highlight_index[page_index] < 0:
                     highlight_index[page_index] = MAX_INDEX
@@ -71,7 +79,7 @@ def _get_user_example_input(output_style: OutputStyle):
                 if highlight_index[page_index] > MAX_INDEX:
                     highlight_index[page_index] = 0
             elif event.name == "right":
-                page_index += 1 
+                page_index += 1
                 if page_index > MAX_PAGE_INDEX:
                     page_index = 0
 
