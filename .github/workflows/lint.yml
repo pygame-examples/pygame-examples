@@ -38,7 +38,7 @@ jobs:
       run: black pgex --check
 
     - name: Analysing CLI with pylint
-      run: pylint --recursive=y --fail-under=10 pgex
+      run: pylint --recursive=y --fail-under=8.5 pgex
 
     - name: Analysing Examples with pylint
       # TODO: be stricter with the score here
