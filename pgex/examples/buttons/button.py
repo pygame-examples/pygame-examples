@@ -2,14 +2,23 @@
 This file is a part of the 'Pygame Examples (pgex)' source code.
 The source code is distributed under the MIT license.
 """
+from typing import Tuple, Union
 
 import pygame
 
 
 class Button:
-    def __init__(self, x, y, width, height, text, text_color, bg_color, method=None):
-        self.rect = pygame.Rect(x, y, width, height)
-        self.font = pygame.font.SysFont("Arial", height)
+    def __init__(
+        self,
+        pos: Tuple[int, int],
+        size: Tuple[int, int],
+        text: str,
+        text_color: Union[str, Tuple[int, int, int]],
+        bg_color: Union[str, Tuple[int, int, int]],
+        method: callable = lambda: None,
+    ) -> None:
+        self.rect = pygame.Rect(pos, size)
+        self.font = pygame.font.SysFont("Arial", size[1])
         self.text_surf = self.font.render(text, False, text_color)
 
         self.color = bg_color
@@ -19,7 +28,7 @@ class Button:
         self._is_pressed = False
         self._text_pos = self.text_surf.get_rect(center=self.rect.center).topleft
 
-    def draw(self, surface):
+    def draw(self, surface: pygame.Surface) -> None:
         """Draws the pygame.Rect and font"""
         pygame.draw.rect(surface, self.color, self.rect)
         surface.blit(
@@ -27,7 +36,7 @@ class Button:
             self._text_pos,
         )
 
-    def update(self):
+    def update(self) -> None:
         """Must be called every frame."""
         if (
             self.rect.collidepoint(pygame.mouse.get_pos())

@@ -13,10 +13,10 @@ from .button import Button
 bg_color = (0, 0, 0)
 
 
-async def main():
+async def main() -> None:
     pygame.init()
 
-    def button_method():
+    def button_method() -> None:
         global bg_color
         bg_color = (
             random.randint(0, 255),
@@ -24,7 +24,7 @@ async def main():
             random.randint(0, 255),
         )
 
-    button = Button(50, 50, 100, 30, "Lol", "black", "white", button_method)
+    button = Button((50, 50), (100, 30), "Lol", "black", "white", button_method)
 
     screen = pygame.display.set_mode((500, 400))
     clock = pygame.time.Clock()
@@ -38,13 +38,13 @@ async def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        button.draw(screen)
         button.update()
+        button.draw(screen)
         pygame.display.flip()
         await asyncio.sleep(0)
 
 
-def run():
+def run() -> None:
     asyncio.run(main())
 
 
