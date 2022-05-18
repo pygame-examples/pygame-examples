@@ -29,7 +29,7 @@ Most examples should be WASM compatible meaning that they can be run in the brow
 
 # Usage
   - These are primarily meant to be used to read the source code, so going through our [examples](https://github.com/Matiiss/pygame_examples/tree/main/pgex/examples) should allow you to get an idea on how we recommend writing your code.
-  - Our examples are also compatible with WASM builds, follow contentions, reviewed by experienced pygame users, and follow an [ECS](https://en.wikipedia.org/wiki/Entity_component_system) or [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming) paradigm for the most part. Which means that following our example(no pun intended), is meant to allow you to write *better* Python code with the `pygame` framework!
+  - Our examples are also compatible with WASM builds, follow conventions, have been reviewed by experienced pygame users, and follow an [ECS](https://en.wikipedia.org/wiki/Entity_component_system) or [OOP](https://en.wikipedia.org/wiki/Object-oriented_programming) paradigm (for the most part). Which means that following our example (no pun intended), should help you to write *better* Python code with the `pygame` framework!
   - If you want to try running our examples, and want to avoid the tedious process of setting up a development environment, we recommend using `pip install git+https://github.com/Matiiss/pygame_examples` if you have Python `3.7+` installed. This will also add `pgex` to the PATH.
   - You can use the `pgex` CLI interface to get started with launching examples on desktop or browser:
   - You can start by running `pgex --help` which should list the available commands. 
