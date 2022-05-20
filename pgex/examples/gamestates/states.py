@@ -39,7 +39,8 @@ class GameState(ABC):
 
 class MainGame(GameState):
     """
-    Game State to select levels.
+    Main Game play for the game. Includes a button to go back to the
+    main menu.
     """
 
     def __init__(self, screen: pygame.Surface) -> None:
