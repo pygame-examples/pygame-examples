@@ -70,7 +70,9 @@ class HorizontalSlider:
 
     def clamp_rail(self, pos: t.Tuple[int, int]) -> t.Tuple[int, int]:
         x, y = pos
-        new_x = max(self.rail.left + self.radius, min(x, self.rail.right - self.radius))
+        new_x = max(
+            self.rail.left + self.radius, min(x, self.rail.right - self.radius)
+        )
         return new_x, self.rail.centery
 
     @property
@@ -81,7 +83,10 @@ class HorizontalSlider:
         rel_val = distance / (
             self.rail.width - 2 * self.radius
         )  # self.button.width instead of diameter for a rectangle
-        value = self.min_value + round((self.range * rel_val) / self.step) * self.step
+        value = (
+            self.min_value
+            + round((self.range * rel_val) / self.step) * self.step
+        )
         return value
 
     @value.setter

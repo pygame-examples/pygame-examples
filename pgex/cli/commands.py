@@ -35,7 +35,7 @@ def _get_sublists(lst, n):
         lst: List to create sublists out of.
         n: Maximum size of sublist.
     """
-    return [lst[i * n: i * n + n] for i in range(-(-len(lst) // n))]
+    return [lst[i * n : i * n + n] for i in range(-(-len(lst) // n))]
 
 
 def _get_user_example_input(output_style: OutputStyle):
@@ -61,10 +61,13 @@ def _get_user_example_input(output_style: OutputStyle):
         click.echo("Use arrow keys to move.\n")
 
         output.color_output(
-            f"\t Page {page_index}/{max_page_index}\n", colorama.Fore.LIGHTRED_EX
+            f"\t Page {page_index}/{max_page_index}\n",
+            colorama.Fore.LIGHTRED_EX,
         )
         output.list_options(
-            output_style, example_names[page_index], highlight_index[page_index]
+            output_style,
+            example_names[page_index],
+            highlight_index[page_index],
         )
 
         event = keyboard.read_event()
@@ -100,7 +103,9 @@ def example_selector():
 
 
 @main.command(help="View example's source code on https://github.com/")
-@click.option("--name", "-n", is_flag=False, flag_value="", help="Name of the example")
+@click.option(
+    "--name", "-n", is_flag=False, flag_value="", help="Name of the example"
+)
 def view(name: str) -> None:
     """
     View example's source code on https::/github.com/
@@ -112,12 +117,15 @@ def view(name: str) -> None:
         name = _get_user_example_input(OutputStyle.RAINBOW_BOX)
 
     webbrowser.open(
-        "https://github.com/Matiiss/" f"pygame_examples/tree/main/pgex/examples/{name}"
+        "https://github.com/Matiiss/"
+        f"pygame_examples/tree/main/pgex/examples/{name}"
     )
 
 
 @main.command(help="Run an example")
-@click.option("--name", "-n", is_flag=False, flag_value="", help="Name of the example")
+@click.option(
+    "--name", "-n", is_flag=False, flag_value="", help="Name of the example"
+)
 def run(name: str) -> None:
     """
     Run an example on web or desktop.
@@ -133,5 +141,6 @@ def run(name: str) -> None:
     except ImportError as err:
         click.echo(err)
         output.error(
-            ImportError, "This example requires the above module to be installed."
+            ImportError,
+            "This example requires the above module to be installed.",
         )

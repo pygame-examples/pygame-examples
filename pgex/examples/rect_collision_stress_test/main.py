@@ -51,10 +51,14 @@ async def main():
         fps_rect = fps_text.get_rect()
         entity_count = len(group)
         check_text = font.render(
-            f"Collision checks: {entity_count * (entity_count-1):,}", True, "white"
+            f"Collision checks: {entity_count * (entity_count-1):,}",
+            True,
+            "white",
         )
         slider_value = font.render(
-            f"Slider value (entities): {horizontal_slider.current_value}", True, "white"
+            f"Slider value (entities): {horizontal_slider.current_value}",
+            True,
+            "white",
         )
         screen.blits(
             (

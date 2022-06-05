@@ -57,5 +57,5 @@ def check_header_string(path: Path = Path()):
 
 
 check_header_string()
-os.system("black .")
+os.system("black . --line-length 79")
 os.system("isort .")

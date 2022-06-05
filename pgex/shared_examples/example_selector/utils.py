@@ -1,5 +1,11 @@
-import pygame
+"""
+This file is a part of the 'Pygame Examples (pgex)' source code.
+The source code is distributed under the MIT license.
+"""
+
 import time
+
+import pygame
 
 
 def float_scale(surf: pygame.Surface, scale: float) -> pygame.Surface:
@@ -21,5 +27,3 @@ class Time:
             self.start = time.perf_counter()
             return True
         return False
-
-

@@ -18,7 +18,10 @@ class ColoredRect:
     """
 
     def __init__(
-        self, pos: Iterable[int], size: Iterable[int], colors: Iterable[ColorValue]
+        self,
+        pos: Iterable[int],
+        size: Iterable[int],
+        colors: Iterable[ColorValue],
     ):
         """
         Parameters:

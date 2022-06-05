@@ -27,7 +27,8 @@ async def main():
 
     pygame.mixer.music.load(
         os.path.join(
-            os.path.dirname(__file__), "assets/Hooky with Sloane - Bird Creek.mp3"
+            os.path.dirname(__file__),
+            "assets/Hooky with Sloane - Bird Creek.mp3",
         )
     )
     pygame.mixer.music.play(loops=-1)

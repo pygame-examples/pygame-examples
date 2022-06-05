@@ -26,7 +26,9 @@ class Renderer:
         # Apply the rules of perspective: 1/Z.
         try:
             translated_x = vector.x / vector.z
-            translated_y = -vector.y / vector.z  # Remember that pygame uses "Y-down."
+            translated_y = (
+                -vector.y / vector.z
+            )  # Remember that pygame uses "Y-down."
         except ZeroDivisionError:
             translated_x = 0
             translated_y = 0
