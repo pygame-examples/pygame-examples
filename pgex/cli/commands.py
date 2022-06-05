@@ -35,7 +35,7 @@ def _get_sublists(lst, n):
         lst: List to create sublists out of.
         n: Maximum size of sublist.
     """
-    return [lst[i * n : i * n + n] for i in range(-(-len(lst) // n))]
+    return [lst[i * n: i * n + n] for i in range(-(-len(lst) // n))]
 
 
 def _get_user_example_input(output_style: OutputStyle):
@@ -45,14 +45,14 @@ def _get_user_example_input(output_style: OutputStyle):
     Parameters:
         output_style: Styling used for output.
     """
-    MAX_INDEX = 8
+    max_index = 8
     page_index = 0
 
     example_names = _get_sublists(
-        [i.name for i in EXAMPLES_DIR.iterdir()], MAX_INDEX + 1
+        [i.name for i in EXAMPLES_DIR.iterdir()], max_index + 1
     )
-    MAX_PAGE_INDEX = len(example_names) - 1
-    highlight_index = [0 for _ in range(MAX_PAGE_INDEX + 1)]
+    max_page_index = len(example_names) - 1
+    highlight_index = [0 for _ in range(max_page_index + 1)]
     output.list_options(output_style, example_names[page_index])
     while True:
         output.cls()
@@ -61,7 +61,7 @@ def _get_user_example_input(output_style: OutputStyle):
         click.echo("Use arrow keys to move.\n")
 
         output.color_output(
-            f"\t Page {page_index}/{MAX_PAGE_INDEX}\n", colorama.Fore.LIGHTRED_EX
+            f"\t Page {page_index}/{max_page_index}\n", colorama.Fore.LIGHTRED_EX
         )
         output.list_options(
             output_style, example_names[page_index], highlight_index[page_index]
@@ -73,25 +73,30 @@ def _get_user_example_input(output_style: OutputStyle):
             if event.name == "up":
                 highlight_index[page_index] -= 1
                 if highlight_index[page_index] < 0:
-                    highlight_index[page_index] = MAX_INDEX
+                    highlight_index[page_index] = max_index
             elif event.name == "down":
                 highlight_index[page_index] += 1
-                if highlight_index[page_index] > MAX_INDEX:
+                if highlight_index[page_index] > max_index:
                     highlight_index[page_index] = 0
             elif event.name == "right":
                 page_index += 1
-                if page_index > MAX_PAGE_INDEX:
+                if page_index > max_page_index:
                     page_index = 0
 
             elif event.name == "left":
                 page_index -= 1
                 if page_index < 0:
-                    page_index = MAX_PAGE_INDEX
+                    page_index = max_page_index
 
             elif event.name == "enter":
                 break
 
     return example_names[page_index][highlight_index[page_index]]
+
+
+@main.command(help="Use a graphical user interface to select or view examples")
+def example_selector():
+    importlib.import_module("pgex.shared_examples.example_selector")
 
 
 @main.command(help="View example's source code on https://github.com/")

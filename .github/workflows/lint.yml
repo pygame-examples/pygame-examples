@@ -53,4 +53,14 @@ jobs:
           echo Running pylint on $dir
           pylint --recursive=y --fail-under=2 $dir
         done
+        for dir in pgex/shared_examples/*/
+        do
+          requirements_txt=${dir}/requirements.txt
+          if [ -f "$requirements_txt" ]; then
+            echo Installing requirements of $dir
+            python -m pip install -r $requirements_txt
+          fi
+          echo Running pylint on $dir
+          pylint --recursive=y --fail-under=2 $dir
+        done
 
