@@ -97,8 +97,10 @@ def _get_user_example_input(output_style: OutputStyle):
     return example_names[page_index][highlight_index[page_index]]
 
 
-@main.command(help="Use a graphical user interface to select or view examples")
-def example_selector():
+@main.command(
+    help="Use a graphical user interface to run or view the source code of examples"
+)
+def gui():
     importlib.import_module("pgex.shared_examples.example_selector")
 
 
