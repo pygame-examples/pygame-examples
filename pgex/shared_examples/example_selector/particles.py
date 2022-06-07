@@ -15,7 +15,7 @@ from .utils import Time
 
 class Particle:
     GLOW_IMG = pygame.image.load(
-        PGEX_DIR / "shared_examples/example_selector/light.png"
+        PGEX_DIR / "shared_examples/example_selector/assets/light.png"
     ).convert_alpha()
 
     def __init__(self, pos: pygame.Vector2, movement: pygame.Vector2) -> None:
