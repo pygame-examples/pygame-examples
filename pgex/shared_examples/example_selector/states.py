@@ -5,6 +5,7 @@ The source code is distributed under the MIT license.
 
 import importlib
 import json
+import webbrowser
 from enum import Enum, auto
 
 import pygame
@@ -110,7 +111,9 @@ class MainMenu:
                             )
                         except Exception as e:
                             print(e)
-                            self.covalent_info.example_picture = pygame.Surface((217, 217))
+                            self.covalent_info.example_picture = (
+                                pygame.Surface((217, 217))
+                            )
 
             self.ui_manager.process_events(event)
 
@@ -128,7 +131,6 @@ class ExampleState:
     """
     The state which renders examples & their options.
     """
-
 
     FONT = pygame.font.Font(None, 45)
 
@@ -182,16 +184,15 @@ class ExampleState:
         self.example_logs = {}
 
     def update(self):
-        content = self.data.get(self.covalent_info.example_name,
-                                "[No description]")
+        content = self.data.get(
+            self.covalent_info.example_name, "[No description]"
+        )
         self.example_desc.set_text(content)
         event_info = self.covalent_info.event_info
         for event in event_info["events"]:
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == self.run_btn:
-                    if (
-                        self.covalent_info.example_name in self.example_logs
-                    ):
+                    if self.covalent_info.example_name in self.example_logs:
                         importlib.reload(
                             self.example_logs[self.covalent_info.example_name]
                         )
@@ -206,6 +207,11 @@ class ExampleState:
                     )
                 if event.ui_element == self.back_btn:
                     self.next_state = GameStates.MAIN_MENU
+                elif event.ui_element == self.view_btn:
+                    webbrowser.open(
+                        "https://github.com/Matiiss/"
+                        f"pygame_examples/tree/main/pgex/examples/{self.covalent_info.example_name}"
+                    )
 
             self.ui_manager.process_events(event)
 
