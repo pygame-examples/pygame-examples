@@ -9,3 +9,4 @@ import pathlib
 
 PGEX_DIR = pathlib.Path(__file__).parent
 EXAMPLES_DIR = PGEX_DIR / "examples"
+PGEX_EXAMPLES = [i.name for i in EXAMPLES_DIR.iterdir()]

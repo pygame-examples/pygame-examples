@@ -5,11 +5,12 @@ The source code is distributed under the MIT license.
 
 # import asyncio
 
-import pygame
-from .pg_init import screen
-
 from dataclasses import dataclass
-from .states import GameStates, MainMenu, ExampleState
+
+import pygame
+
+from .pg_init import screen
+from .states import ExampleState, GameStates, MainMenu
 
 
 @dataclass
@@ -35,7 +36,7 @@ class Game:
         self.covalent_info = CovalentInfo(screen, self.get_events())
         self.states = {
             GameStates.MAIN_MENU: MainMenu(self.covalent_info),
-            GameStates.EXAMPLE_STATE: ExampleState(self.covalent_info)
+            GameStates.EXAMPLE_STATE: ExampleState(self.covalent_info),
         }
         self.current_state = GameStates.MAIN_MENU
 
@@ -73,7 +74,9 @@ class Game:
             self.screen.fill("black")
             self.states[self.current_state].draw()
 
-            if (state := self.states[self.current_state].next_state) is not None:
+            if (
+                state := self.states[self.current_state].next_state
+            ) is not None:
                 self.current_state = state
                 for g in self.states.values():
                     if g == self.states[self.current_state]:

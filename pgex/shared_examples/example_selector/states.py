@@ -1,12 +1,19 @@
-import pygame
-from .particles import ParticleManager
-
-import pygame_gui
+"""
+This file is a part of the 'Pygame Examples (pgex)' source code.
+The source code is distributed under the MIT license.
+"""
 
 import importlib
-from pgex.common import EXAMPLES_DIR, PGEX_DIR
-from .pg_init import SCREEN_SIZE
+import json
 from enum import Enum, auto
+
+import pygame
+import pygame_gui
+
+from pgex.common import EXAMPLES_DIR, PGEX_DIR, PGEX_EXAMPLES
+
+from .particles import ParticleManager
+from .pg_init import SCREEN_SIZE
 
 
 class GameStates:
@@ -15,6 +22,10 @@ class GameStates:
 
 
 class MainMenu:
+    """
+    Preview the examples to choose from.
+    """
+
     FONT = pygame.font.Font(None, 40)
 
     def __init__(self, covalent_info) -> None:
@@ -87,14 +98,19 @@ class MainMenu:
                         self.covalent_info.example_name = btn.text
 
                         try:
-                            stub = pygame.image.load(PGEX_DIR / "shared_examples"
-                                    f"/example_selector/assets/{btn.text}.png").convert()
+                            stub = pygame.image.load(
+                                PGEX_DIR / "shared_examples"
+                                f"/example_selector/assets/{btn.text}.png"
+                            ).convert()
 
                             rect = pygame.Rect(0, 0, 217, 217)
-                            rect.center = stub.get_rect().center 
-                            self.covalent_info.example_picture = stub.subsurface(rect)
+                            rect.center = stub.get_rect().center
+                            self.covalent_info.example_picture = (
+                                stub.subsurface(rect)
+                            )
                         except Exception as e:
                             print(e)
+                            self.covalent_info.example_picture = pygame.Surface((217, 217))
 
             self.ui_manager.process_events(event)
 
@@ -109,16 +125,32 @@ class MainMenu:
 
 
 class ExampleState:
+    """
+    The state which renders examples & their options.
+    """
+
+
     FONT = pygame.font.Font(None, 45)
 
     def __init__(self, covalent_info):
         self.covalent_info = covalent_info
         self.screen = self.covalent_info.screen
-        self.next_state = None 
+        self.next_state = None
         self.ui_manager = pygame_gui.UIManager(
             SCREEN_SIZE,
             theme_path=PGEX_DIR / "shared_examples"
             "/example_selector/assets/theme.json",
+        )
+
+        with open(
+            PGEX_DIR / "shared_examples" "/example_selector/assets/data.json"
+        ) as f:
+            self.data = json.load(f)
+
+        self.example_desc = pygame_gui.elements.UITextBox(
+            html_text="",
+            relative_rect=pygame.Rect(20, 270, 270, 200),
+            manager=self.ui_manager,
         )
 
         self.background = pygame.Surface(SCREEN_SIZE)
@@ -130,27 +162,48 @@ class ExampleState:
         self.run_btn = pygame_gui.elements.UIButton(
             relative_rect=pygame.Rect(btn_pos, btn_size),
             text="Run",
-            manager=self.ui_manager
+            manager=self.ui_manager,
         )
         self.view_btn = pygame_gui.elements.UIButton(
-            relative_rect=pygame.Rect(btn_pos[0], btn_pos[1] + 10 + 40, *btn_size),
+            relative_rect=pygame.Rect(
+                btn_pos[0], btn_pos[1] + 10 + 40, *btn_size
+            ),
             text="View",
-            manager=self.ui_manager
+            manager=self.ui_manager,
         )
         self.back_btn = pygame_gui.elements.UIButton(
-            relative_rect=pygame.Rect(btn_pos[0] + 20, btn_pos[1] + 10 + 370,
-             100, 30),
+            relative_rect=pygame.Rect(
+                btn_pos[0] + 20, btn_pos[1] + 10 + 370, 100, 30
+            ),
             text="Back",
-            manager=self.ui_manager
+            manager=self.ui_manager,
         )
 
+        self.example_logs = {}
+
     def update(self):
+        content = self.data.get(self.covalent_info.example_name,
+                                "[No description]")
+        self.example_desc.set_text(content)
         event_info = self.covalent_info.event_info
         for event in event_info["events"]:
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == self.run_btn:
-                    importlib.import_module(f"pgex.examples.{self.covalent_info.example_name}")
-                    self.covalent_info.screen = pygame.display.set_mode(SCREEN_SIZE, pygame.SCALED)
+                    if (
+                        self.covalent_info.example_name in self.example_logs
+                    ):
+                        importlib.reload(
+                            self.example_logs[self.covalent_info.example_name]
+                        )
+                    else:
+                        self.example_logs[
+                            self.covalent_info.example_name
+                        ] = importlib.import_module(
+                            f"pgex.examples.{self.covalent_info.example_name}"
+                        )
+                    self.covalent_info.screen = pygame.display.set_mode(
+                        SCREEN_SIZE, pygame.SCALED
+                    )
                 if event.ui_element == self.back_btn:
                     self.next_state = GameStates.MAIN_MENU
 
@@ -161,11 +214,12 @@ class ExampleState:
     def draw(self):
         self.screen.blit(self.background, (0, 0))
 
-        text = self.FONT.render(self.covalent_info.example_name, True, (200, 200, 200))
+        text = self.FONT.render(
+            self.covalent_info.example_name, True, (200, 200, 200)
+        )
         rect = text.get_rect()
         rect.centerx = self.background_rect.centerx
         rect.y = 10
         self.screen.blit(text, rect)
         self.screen.blit(self.covalent_info.example_picture, (20, 40))
         self.ui_manager.draw_ui(self.screen)
-

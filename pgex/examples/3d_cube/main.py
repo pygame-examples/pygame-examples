@@ -16,15 +16,7 @@ from .renderer import Renderer
 
 
 class Game:
-    # Should be a singleton.
-    _instanced = False
-
     def __init__(self):
-        if type(self)._instanced:
-            raise NotImplementedError(
-                "only one Game instance can currently be initialized at a time"
-            )
-
         pygame.init()
 
         self.screen = pygame.display.set_mode((800, 600), pygame.RESIZABLE)
@@ -36,12 +28,6 @@ class Game:
         self.cube_position = Vector3(0, 0, 4)
         self.cube_rotation = Vector3(0, 0, 0)
         self.cube_scale = Vector3(1, 1, 1)
-
-        type(self)._instanced = True
-
-    def __del__(self):
-        pygame.quit()
-        type(self)._instanced = False
 
     def run(self):
         # For WASM compatibility.
