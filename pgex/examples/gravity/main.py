@@ -19,9 +19,7 @@ async def main():
     """
     screen_width, screen_height = 600, 500
     screen = pygame.display.set_mode((screen_width, screen_height))
-    pygame.display.set_caption(
-        "Gravity! (press a mouse button to spawn a ball)"
-    )
+    pygame.display.set_caption("Gravity! (press a mouse button to spawn a ball)")
     clock = pygame.time.Clock()
 
     ball_list = []

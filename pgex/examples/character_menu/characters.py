@@ -9,9 +9,7 @@ import pygame
 
 
 def _load_image(path):
-    return pygame.image.load(
-        os.path.join(os.path.dirname(__file__), "assets", path)
-    )
+    return pygame.image.load(os.path.join(os.path.dirname(__file__), "assets", path))
 
 
 class BaseCharacter:

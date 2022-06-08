@@ -42,9 +42,7 @@ class MainMenu:
         self.background_rect = self.background.get_rect()
         self.background.fill(self.ui_manager.ui_theme.get_colour("dark_bg"))
 
-        self.title_surf = self.FONT.render(
-            "PYGAME EXAMPLES", True, (200, 200, 200)
-        )
+        self.title_surf = self.FONT.render("PYGAME EXAMPLES", True, (200, 200, 200))
         self.t_rect = self.title_surf.get_rect(
             center=(self.background_rect.centerx, 140)
         )
@@ -67,9 +65,7 @@ class MainMenu:
             )
             btn_rect.center = (
                 self.background_rect.centerx,
-                ((btn_size[1] + btn_pad_y) * index)
-                + self.background_rect.centery
-                - 30,
+                ((btn_size[1] + btn_pad_y) * index) + self.background_rect.centery - 30,
             )
             btn = pygame_gui.elements.UIButton(
                 relative_rect=btn_rect, text=name, manager=self.ui_manager
@@ -106,13 +102,11 @@ class MainMenu:
 
                             rect = pygame.Rect(0, 0, 217, 217)
                             rect.center = stub.get_rect().center
-                            self.covalent_info.example_picture = (
-                                stub.subsurface(rect)
-                            )
+                            self.covalent_info.example_picture = stub.subsurface(rect)
                         except Exception as e:
                             print(e)
-                            self.covalent_info.example_picture = (
-                                pygame.Surface((217, 217))
+                            self.covalent_info.example_picture = pygame.Surface(
+                                (217, 217)
                             )
 
             self.ui_manager.process_events(event)
@@ -167,16 +161,12 @@ class ExampleState:
             manager=self.ui_manager,
         )
         self.view_btn = pygame_gui.elements.UIButton(
-            relative_rect=pygame.Rect(
-                btn_pos[0], btn_pos[1] + 10 + 40, *btn_size
-            ),
+            relative_rect=pygame.Rect(btn_pos[0], btn_pos[1] + 10 + 40, *btn_size),
             text="View",
             manager=self.ui_manager,
         )
         self.back_btn = pygame_gui.elements.UIButton(
-            relative_rect=pygame.Rect(
-                btn_pos[0] + 20, btn_pos[1] + 10 + 370, 100, 30
-            ),
+            relative_rect=pygame.Rect(btn_pos[0] + 20, btn_pos[1] + 10 + 370, 100, 30),
             text="Back",
             manager=self.ui_manager,
         )
@@ -184,9 +174,7 @@ class ExampleState:
         self.example_logs = {}
 
     def update(self):
-        content = self.data.get(
-            self.covalent_info.example_name, "[No description]"
-        )
+        content = self.data.get(self.covalent_info.example_name, "[No description]")
         self.example_desc.set_text(content)
         event_info = self.covalent_info.event_info
         for event in event_info["events"]:
@@ -220,9 +208,7 @@ class ExampleState:
     def draw(self):
         self.screen.blit(self.background, (0, 0))
 
-        text = self.FONT.render(
-            self.covalent_info.example_name, True, (200, 200, 200)
-        )
+        text = self.FONT.render(self.covalent_info.example_name, True, (200, 200, 200))
         rect = text.get_rect()
         rect.centerx = self.background_rect.centerx
         rect.y = 10

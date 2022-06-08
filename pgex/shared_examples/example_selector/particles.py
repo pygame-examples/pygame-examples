@@ -38,9 +38,7 @@ class Particle:
             self.GLOW_IMG, (self.size * 2.5, self.size * 2.5)
         )
         self.fg_rect = self.fg_surf.get_rect(center=self.pos)
-        screen.blit(
-            self.fg_surf, self.fg_rect, special_flags=pygame.BLEND_RGB_ADD
-        )
+        screen.blit(self.fg_surf, self.fg_rect, special_flags=pygame.BLEND_RGB_ADD)
 
 
 class ParticleManager:

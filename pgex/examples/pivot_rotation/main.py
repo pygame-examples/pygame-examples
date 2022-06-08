@@ -31,9 +31,7 @@ async def main():
     image = Image(SCREENW, SCREENH, font)
 
     while running:
-        dt = (
-            clock.tick(FPS) / 1000
-        )  # Clamp the fps at 60 and get the delta time
+        dt = clock.tick(FPS) / 1000  # Clamp the fps at 60 and get the delta time
 
         # The event loop for processing the events
         for event in pygame.event.get():

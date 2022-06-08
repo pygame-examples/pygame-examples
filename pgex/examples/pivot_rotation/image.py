@@ -25,9 +25,7 @@ class Image:
         self.load_image()
 
         self.center_pos = pygame.Vector2(self.screenw / 2, self.screenh / 2)
-        self.pivot_pos = pygame.Vector2(
-            self.image_rect.w / 2, self.image_rect.h / 2
-        )
+        self.pivot_pos = pygame.Vector2(self.image_rect.w / 2, self.image_rect.h / 2)
 
         self.angle = 0
         self.is_dragged = False
@@ -46,10 +44,7 @@ class Image:
         This function checks for mouse events and if the mouse is pressed inside the source rectangle position of the pivot is changed according to it.
         """
         mpos = pygame.mouse.get_pos()
-        if (
-            event.type == pygame.MOUSEBUTTONDOWN
-            and self.image_rect.collidepoint(mpos)
-        ):
+        if event.type == pygame.MOUSEBUTTONDOWN and self.image_rect.collidepoint(mpos):
             self.pivot_pos = pygame.Vector2(mpos)
 
     def physics(self):
@@ -94,9 +89,7 @@ class Image:
             self.angle += 360
 
     def transform(self):
-        self.transformed_image = pygame.transform.rotate(
-            self.image, -self.angle
-        )
+        self.transformed_image = pygame.transform.rotate(self.image, -self.angle)
         self.transformed_rect = self.transformed_image.get_rect()
 
     def create_text(self):
@@ -107,9 +100,7 @@ class Image:
             topright=(self.screenw, 0)
         )
 
-        self.text_angle = self.font.render(
-            f"Angle: {int(self.angle)}", True, "Magenta"
-        )
+        self.text_angle = self.font.render(f"Angle: {int(self.angle)}", True, "Magenta")
         self.text_angle_rect = self.text_angle.get_rect(
             topright=(self.screenw, self.text_pivot_pos_rect.bottom)
         )

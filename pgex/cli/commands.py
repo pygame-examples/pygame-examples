@@ -105,9 +105,7 @@ def gui():
 
 
 @main.command(help="View example's source code on https://github.com/")
-@click.option(
-    "--name", "-n", is_flag=False, flag_value="", help="Name of the example"
-)
+@click.option("--name", "-n", is_flag=False, flag_value="", help="Name of the example")
 def view(name: str) -> None:
     """
     View example's source code on https::/github.com/
@@ -119,15 +117,12 @@ def view(name: str) -> None:
         name = _get_user_example_input(OutputStyle.RAINBOW_BOX)
 
     webbrowser.open(
-        "https://github.com/Matiiss/"
-        f"pygame_examples/tree/main/pgex/examples/{name}"
+        "https://github.com/Matiiss/" f"pygame_examples/tree/main/pgex/examples/{name}"
     )
 
 
 @main.command(help="Run an example")
-@click.option(
-    "--name", "-n", is_flag=False, flag_value="", help="Name of the example"
-)
+@click.option("--name", "-n", is_flag=False, flag_value="", help="Name of the example")
 def run(name: str) -> None:
     """
     Run an example on web or desktop.

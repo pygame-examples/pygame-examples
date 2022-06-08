@@ -74,9 +74,7 @@ class Game:
             self.screen.fill("black")
             self.states[self.current_state].draw()
 
-            if (
-                state := self.states[self.current_state].next_state
-            ) is not None:
+            if (state := self.states[self.current_state].next_state) is not None:
                 self.current_state = state
                 for g in self.states.values():
                     if g == self.states[self.current_state]:

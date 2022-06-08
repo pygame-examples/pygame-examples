@@ -24,9 +24,7 @@ async def main() -> None:
             random.randint(0, 255),
         )
 
-    button = Button(
-        (50, 50), (100, 30), "Lol", "black", "white", button_method
-    )
+    button = Button((50, 50), (100, 30), "Lol", "black", "white", button_method)
 
     screen = pygame.display.set_mode((500, 400))
     clock = pygame.time.Clock()

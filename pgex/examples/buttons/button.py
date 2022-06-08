@@ -26,9 +26,7 @@ class Button:
         self.func = method
 
         self._is_pressed = False
-        self._text_pos = self.text_surf.get_rect(
-            center=self.rect.center
-        ).topleft
+        self._text_pos = self.text_surf.get_rect(center=self.rect.center).topleft
 
     def draw(self, surface: pygame.Surface) -> None:
         """Draws the pygame.Rect and font"""

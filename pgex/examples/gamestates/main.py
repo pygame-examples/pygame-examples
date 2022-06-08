@@ -64,8 +64,8 @@ class Game:
 
             self.current_game_state.update(event_info)
             if self.current_game_state.is_over:
-                self.current_game_state = (
-                    self.current_game_state.next_game_state()(self.screen)
+                self.current_game_state = self.current_game_state.next_game_state()(
+                    self.screen
                 )
 
             self.screen.fill("black")
