@@ -16,7 +16,9 @@ from pgex.cli.styles import OutputStyle
 
 
 def list_options(
-    output_style: OutputStyle, options: Iterable, highlight_index: Optional[int] = None
+    output_style: OutputStyle,
+    options: Iterable,
+    highlight_index: Optional[int] = None,
 ) -> None:
     """
     List options.

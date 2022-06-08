@@ -43,7 +43,7 @@ jobs:
     - name: Analysing Examples with pylint
       # TODO: be stricter with the score here
       run: |
-        for dir in pgex/examples/*/
+        for dir in pgex/*examples/*/
         do
           requirements_txt=${dir}/requirements.txt
           if [ -f "$requirements_txt" ]; then
