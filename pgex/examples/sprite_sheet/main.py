@@ -4,6 +4,7 @@ The source code is distributed under the MIT license.
 """
 
 import asyncio
+import os
 from typing import List, Tuple
 
 import pygame
@@ -22,15 +23,16 @@ def get_images(
     images = []
 
     # get the amount of rows and columns in the sprite sheet
-    rows = int(sheet.get_height() / size[1])
-    columns = int(sheet.get_width() / size[0])
+    width, height = size
+    rows = int(sheet.get_height() / height)
+    columns = int(sheet.get_width() / width)
 
     # loop through all sprites in the sprite sheet
     for row in range(rows):
         for col in range(columns):
             # get the image
             image = sheet.subsurface(
-                pygame.Rect((col * size[0]), (row * size[1]), size[0], size[1])
+                pygame.Rect((col * width), (row * height), width, height)
             )
 
             if bound:
@@ -53,11 +55,14 @@ async def main():
 
     sprite_size = (96, 102)
     # loading the sprite sheet
-    sheet = pygame.image.load("sheet.png").convert_alpha()
+    sheet = pygame.image.load(
+        os.path.join(os.path.dirname(__file__), "sheet.png")
+    ).convert_alpha()
     # getting the frames of the sprite sheet
     frames = get_images(sheet, sprite_size)
     # frame index
-    _index = 0
+    index = 0
+    animation_speed = 10
 
     while True:
         for event in pygame.event.get():
@@ -67,15 +72,15 @@ async def main():
         screen.fill("black")
 
         # increase the frame index
-        _index += 0.1
+        index += 1
 
         # if the frame index is too high, reset it to 0
         # this makes the animation loop
-        if _index >= len(frames):
-            _index = 0
+        if index >= len(frames) * animation_speed:
+            index = 0
 
         # draw the current frame
-        screen.blit(frames[int(_index)], (250, 150))
+        screen.blit(frames[index // animation_speed], (250, 150))
 
         clock.tick(60)
         pygame.display.flip()

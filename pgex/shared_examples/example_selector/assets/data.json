@@ -1,5 +1,6 @@
 {
     "3d_cube": "This example shows a method to render a 3d cube using pygame alone."
+    "sprite_sheet": "This example shows a method to load sprite sheets in pygame."
 }
 
 
