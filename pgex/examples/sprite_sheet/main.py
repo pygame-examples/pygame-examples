@@ -55,6 +55,7 @@ async def main():
 
     sprite_size = (96, 102)
     # loading the sprite sheet
+    # art made by https://0x72.itch.io
     sheet = pygame.image.load(
         os.path.join(os.path.dirname(__file__), "sheet.png")
     ).convert_alpha()
