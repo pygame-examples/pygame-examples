@@ -10,13 +10,26 @@ import pygame
 from . import common
 
 
+def get_colliding_tiles(tiles: list, player_rect: pygame.Rect) -> list:
+    """
+    Returns a list of tiles the player is currently colliding with
+    """
+    return_tiles = []
+    for tile in tiles:
+        if player_rect.colliderect(tile):
+            return_tiles.append(tile)
+
+    return tiles
+
+
 def calculate_rect(
-    movement: list, player_rect: pygame.Rect, tiles: list
+    movement: list, player_rect: pygame.Rect, map_tiles: list
 ) -> pygame.Rect:
     """
     Calculates the Rect of the player based on their movement and the surrounding tiles
     """
     player_rect.x += movement[0]
+    tiles = get_colliding_tiles(map_tiles, player_rect)
     for tile in tiles:
         if player_rect.colliderect(tile):
             if movement[0] > 0:
@@ -26,6 +39,7 @@ def calculate_rect(
 
     common.is_on_ground = False
     player_rect.y += movement[1]
+    tiles = get_colliding_tiles(map_tiles, player_rect)
     for tile in tiles:
         if player_rect.colliderect(tile):
             if movement[1] > 0:
