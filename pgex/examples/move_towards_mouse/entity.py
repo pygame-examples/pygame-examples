@@ -55,5 +55,5 @@ class Entity:
         pygame.draw.rect(
             display,
             self.color,
-            (self.rect.x, self.rect.y, self.rect.width, self.rect.height),
+            self.rect,
         )

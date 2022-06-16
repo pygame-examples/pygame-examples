@@ -30,14 +30,14 @@ class Game:
 
     def get_mouse_position(self) -> Tuple[int, int]:
         """
-        Returns mouse position
+        Returns mouse position.
         """
 
         return pygame.mouse.get_pos()
 
     async def main(self) -> None:
         """
-        Game main loop. Handles events, rendering etc
+        Game main loop. Handles events, rendering etc.
         """
 
         while self.running:
@@ -56,7 +56,7 @@ class Game:
 
     def run(self) -> None:
         """
-        Run the main loop
+        Run the main loop.
         """
 
         asyncio.run(self.main())
