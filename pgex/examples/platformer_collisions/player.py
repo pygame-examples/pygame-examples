@@ -3,6 +3,8 @@ This file is a part of the 'Pygame Examples (pgex)' source code.
 The source code is distributed under the MIT license.
 """
 
+from typing import List
+
 import pygame
 
 from . import common
@@ -25,8 +27,8 @@ class Player:
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def get_colliding_tiles(
-        self, tiles: list[Tile], player_rect: pygame.Rect
-    ) -> list[Tile]:
+        self, tiles: List[Tile], player_rect: pygame.Rect
+    ) -> List[Tile]:
         """
         Returns a list of tiles the player is currently colliding with
         """
@@ -38,7 +40,7 @@ class Player:
         return tiles
 
     def calculate_rect(
-        self, movement: dict, player_rect: pygame.Rect, map_tiles: list[Tile]
+        self, movement: dict, player_rect: pygame.Rect, map_tiles: List[Tile]
     ) -> pygame.Rect:
         """
         Calculates the Rect of the player based on their movement and the surrounding tiles

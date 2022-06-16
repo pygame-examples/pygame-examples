@@ -4,6 +4,7 @@ The source code is distributed under the MIT license.
 """
 
 import asyncio
+from typing import List
 
 import pygame
 
@@ -23,7 +24,9 @@ class Game:
         self.key_presses = {"a": False, "d": False}
         self.player = Player(x=100, y=100, width=64, height=45, color=(255, 0, 0))
 
-    def render_map(self, display: pygame.Surface, tiles: list[Tile]) -> None:
+        self.running = True
+
+    def render_map(self, display: pygame.Surface, tiles: List[Tile]) -> None:
         """
         Renders the games tiles
         """
@@ -35,20 +38,21 @@ class Game:
         """
         Game main function. Handles key presses, map and player rendering
         """
-        while True:
+        while self.running:
             self.display.fill(pygame.Color("black"))
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    raise SystemExit
+                    self.running = False
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         if self.player.is_on_ground:
                             self.player.y_velocity -= self.player.JUMP_HEIGHT
 
-            self.key_presses["a"] = pygame.key.get_pressed()[pygame.K_a]
-            self.key_presses["d"] = pygame.key.get_pressed()[pygame.K_d]
+            keys = pygame.key.get_pressed()
+            self.key_presses["a"] = keys[pygame.K_a]
+            self.key_presses["d"] = keys[pygame.K_d]
 
             self.player.handle_movement(self.key_presses)
             self.player.draw(self.display)
