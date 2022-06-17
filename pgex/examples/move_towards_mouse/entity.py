@@ -5,13 +5,11 @@ The source code is distributed under the MIT license.
 
 import math
 from typing import Tuple
+from .vector2 import Vector2
 
 import pygame
 
-from .vector2 import Vector2
-
 pygame.math.Vector2 = Vector2
-
 
 class Entity:
     def __init__(
@@ -53,7 +51,6 @@ class Entity:
         """
         Render the entity
         """
-
         pygame.draw.rect(
             display,
             self.color,
