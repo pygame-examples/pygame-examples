@@ -25,7 +25,7 @@ class Game:
         self.running = True
 
         self.entity = Entity(
-            x=100, y=100, width=64, height=64, speed=7, color=(255, 0, 0)
+            x=100, y=100, width=64, height=64, speed=10, color=(255, 0, 0)
         )
 
     def get_mouse_position(self) -> Tuple[int, int]:

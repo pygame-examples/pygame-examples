@@ -8,6 +8,10 @@ from typing import Tuple
 
 import pygame
 
+from .vector2 import Vector2
+
+pygame.math.Vector2 = Vector2
+
 
 class Entity:
     def __init__(
@@ -41,11 +45,9 @@ class Entity:
         """
 
         position_vector = pygame.math.Vector2(*self.get_centered_position())
-        dy, dx = y_pos - position_vector.y, x_pos - position_vector.x
-        angle = math.atan2(dy, dx)
-
-        self.rect.x += math.cos(angle) * (self.speed * (abs(dx) / 100) + 1.1)
-        self.rect.y += math.sin(angle) * (self.speed * (abs(dy) / 100) + 1.1)
+        update_position = position_vector.move_towards(x_pos, y_pos, self.speed)
+        self.rect.x += update_position[0] * abs(x_pos - position_vector.x) / 100 + 1.1
+        self.rect.y += update_position[1] * abs(y_pos - position_vector.y) / 100 + 1.1
 
     def draw(self, display: pygame.Surface) -> None:
         """
