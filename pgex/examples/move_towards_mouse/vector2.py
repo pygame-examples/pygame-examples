@@ -22,6 +22,6 @@ class Vector2:
         dy, dx = dst_y - self.y, dst_x - self.x
         angle = math.atan2(dy, dx)
 
-        if dx != 0 and dy != 0:
+        if dx and dy:
             return math.cos(angle) * speed, math.sin(angle) * speed
         return 0, 0
