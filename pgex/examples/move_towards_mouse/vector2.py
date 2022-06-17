@@ -23,5 +23,5 @@ class Vector2:
         angle = math.atan2(dy, dx)
 
         if dx != 0 and dy != 0:
-            return (math.cos(angle) * speed, math.sin(angle) * speed)
+            return math.cos(angle) * speed, math.sin(angle) * speed
         return 0, 0
