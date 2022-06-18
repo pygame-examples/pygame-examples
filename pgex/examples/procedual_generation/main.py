@@ -85,7 +85,7 @@ class Game:
             self.events = pygame.event.get()
             for event in self.events:
                 if event.type == pygame.QUIT:
-                    running = False
+                    self.running = False
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
