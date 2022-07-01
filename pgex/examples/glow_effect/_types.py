@@ -1,0 +1,14 @@
+"""
+This file is a part of the 'Pygame Examples (pgex)' source code.
+The source code is distributed under the MIT license.
+"""
+
+from typing import List, Sequence, Tuple, TypeAlias, Union
+
+import pygame
+
+Point: TypeAlias = Union[Tuple[int, int], List[int], pygame.Vector2, Sequence[int]]
+_RgbaOutput = Tuple[int, int, int, int]
+_ColorValue = Union[
+    pygame.Color, int, str, Tuple[int, int, int], List[int], _RgbaOutput
+]
