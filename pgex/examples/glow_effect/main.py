@@ -6,8 +6,8 @@ The source code is distributed under the MIT license.
 import asyncio
 
 import pygame
-from _types import _ColorValue
-from darkener import Darkener
+from ._types import _ColorValue
+from .darkener import Darkener
 
 
 def draw_stripes(bg: pygame.Surface, color: _ColorValue, thickness: int):
