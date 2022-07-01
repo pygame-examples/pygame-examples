@@ -7,9 +7,7 @@ from typing import List, Sequence, Tuple, TypeAlias, Union
 
 import pygame
 
-Point: TypeAlias = Union[
-    Tuple[int, int], List[int], pygame.Vector2, Sequence[int]
-]
+Point: TypeAlias = Union[Tuple[int, int], List[int], pygame.Vector2, Sequence[int]]
 _RgbaOutput: TypeAlias = Tuple[int, int, int, int]
 _ColorValue: TypeAlias = Union[
     pygame.Color, int, str, Tuple[int, int, int], List[int], _RgbaOutput
