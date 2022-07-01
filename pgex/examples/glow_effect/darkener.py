@@ -15,7 +15,7 @@ class Darkener:
         darken_ratio: float,
     ) -> None:
 
-        if darken_ratio > 1 or darken_ratio < 0:
+        if not 0 <= darken_ratio <= 1:
             raise ValueError("darken_ratio must be between 0 and 1")
 
         self.radius = radius
