@@ -11,17 +11,19 @@ import pygame
 
 Point = Tuple[int, int]
 
+
 def distance(p1: Point, p2: Point) -> float:
     dx = p1[0] - p2[0]
     dy = p1[1] - p2[1]
-    radicand = dx ** 2 + dy ** 2
+    radicand = dx**2 + dy**2
     return math.sqrt(radicand)
+
 
 def darken(
     radius: int,
     center: Point,
     base_surface: pygame.surface.Surface,
-    darken_percent: float
+    darken_percent: float,
 ) -> pygame.surface.Surface:
 
     surf_size = base_surface.get_size()
@@ -50,6 +52,7 @@ def darken(
     base_surface.blit(dark_surface, dark_surface.get_rect())
 
     return base_surface
+
 
 async def main() -> None:
     pygame.init()
@@ -81,8 +84,10 @@ async def main() -> None:
 
         await asyncio.sleep(0)
 
+
 def run():
     asyncio.run(main())
+
 
 if __name__ == "__main__":
     run()
