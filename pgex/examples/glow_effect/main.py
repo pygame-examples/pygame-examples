@@ -4,54 +4,21 @@ The source code is distributed under the MIT license.
 """
 
 import asyncio
-import math
-from typing import Tuple
 
 import pygame
-
-Point = Tuple[int, int]
-
-
-def distance(p1: Point, p2: Point) -> float:
-    dx = p1[0] - p2[0]
-    dy = p1[1] - p2[1]
-    radicand = dx**2 + dy**2
-    return math.sqrt(radicand)
+from _types import _ColorValue
+from darkener import Darkener
 
 
-def darken(
-    radius: int,
-    center: Point,
-    base_surface: pygame.surface.Surface,
-    darken_percent: float,
-) -> pygame.surface.Surface:
+def draw_stripes(bg: pygame.Surface, color: _ColorValue, thickness: int):
+    width, height = bg.get_size()
 
-    surf_size = base_surface.get_size()
+    stripe_rect = pygame.Rect((0, 0), (thickness, height))
 
-    dark_surface = pygame.Surface(surf_size, pygame.SRCALPHA)
-    dark_surface.fill((0, 0, 0, darken_percent * 255))
-
-    important_rect = pygame.Rect(0, 0, radius * 2, radius * 2)
-    important_rect.center = center
-
-    try:
-        subsurface = dark_surface.subsurface(important_rect)
-    except ValueError:
-        base_surface.blit(dark_surface, dark_surface.get_rect())
-        return base_surface
-
-    pixels = pygame.surfarray.pixels_alpha(subsurface)
-
-    central_point = (radius, radius)
-    for row in range(radius * 2):
-        for col in range(radius * 2):
-            if distance((row, col), central_point) <= radius:
-                pixels[row][col] = 0
-
-    del pixels
-    base_surface.blit(dark_surface, dark_surface.get_rect())
-
-    return base_surface
+    for i in range(width // thickness):
+        if i % 2:
+            stripe_rect.left = thickness * i
+            pygame.draw.rect(bg, color, stripe_rect)
 
 
 async def main() -> None:
@@ -62,7 +29,14 @@ async def main() -> None:
     screen = pygame.display.set_mode((width, height))
     clock = pygame.time.Clock()
 
-    radius = 20
+    bg = pygame.Surface((width, height))
+    bg.fill("red")
+    draw_stripes(bg, "green", 5)
+
+    radius = 30
+    darken_ratio = 0.4
+
+    bg_darkener = Darkener(bg, radius, darken_ratio)
 
     running = True
     while running:
@@ -70,14 +44,11 @@ async def main() -> None:
             if event.type == pygame.QUIT:
                 running = False
 
-        bg = pygame.Surface((width, height))
-        bg.fill("red")
-
         mousepos = pygame.mouse.get_pos()
-        bg = darken(radius, mousepos, bg, 0.58)
+        bg_darkener.update(mousepos)
 
         screen.fill((0, 0, 0))
-        screen.blit(bg, bg.get_rect())
+        bg_darkener.draw(screen, bg.get_rect())
         pygame.display.flip()
 
         clock.tick(60)
