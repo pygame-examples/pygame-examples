@@ -15,8 +15,8 @@ async def main() -> None:
     screen = pygame.display.set_mode((640, 320))
     clock = pygame.time.Clock()
 
-    seed = "Hello World!"
-    maze = Generator(screen.get_size(), 8, seed)
+    # seed is an optional argument to get the same maze
+    maze = Generator(screen.get_size(), 8)
 
     running = True
     while running:
