@@ -6,19 +6,16 @@ The source code is distributed under the MIT license.
 import asyncio
 
 import pygame
-
-# from ._types import _ColorValue
+from .generator import Generator
 
 
 async def main() -> None:
     pygame.init()
-
-    width, height = 400, 500
-
-    screen = pygame.display.set_mode((width, height))
+    screen = pygame.display.set_mode((640, 320))
     clock = pygame.time.Clock()
 
-
+    seed = "Hello World!"
+    maze = Generator(screen.get_size(), 8, seed)
 
     running = True
     while running:
@@ -26,11 +23,10 @@ async def main() -> None:
             if event.type == pygame.QUIT:
                 running = False
 
-
-        screen.fill((0, 0, 0))
+        screen.fill("red")
+        maze.draw(screen)
         pygame.display.flip()
-
-        clock.tick(60)
+        clock.tick()
 
         await asyncio.sleep(0)
 
