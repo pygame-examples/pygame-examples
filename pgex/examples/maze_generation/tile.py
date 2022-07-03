@@ -5,6 +5,7 @@ The source code is distributed under the MIT license.
 
 
 import pygame
+
 from ._types import Array, _ColorValue
 
 
@@ -22,9 +23,7 @@ class Tile(pygame.sprite.Sprite):
         self.set_rect()
 
     def set_rect(self):
-        self.rect = pygame.Rect(
-            self.pos.x, self.pos.y, self.tile_size, self.tile_size
-        )
+        self.rect = pygame.Rect(self.pos.x, self.pos.y, self.tile_size, self.tile_size)
 
     def change_color(self, new_color: _ColorValue) -> None:
         self.color = new_color

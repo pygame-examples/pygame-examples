@@ -8,6 +8,7 @@ import random
 
 import numpy
 import pygame
+
 from ._types import Array, _SeedValue
 from .tile import Tile
 

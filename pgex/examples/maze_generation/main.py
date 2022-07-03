@@ -6,6 +6,7 @@ The source code is distributed under the MIT license.
 import asyncio
 
 import pygame
+
 from .generator import Generator
 
 
