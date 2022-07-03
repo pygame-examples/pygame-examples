@@ -120,16 +120,11 @@ class Generator:
         visited = 0
         candidates = [point + offset for offset in self.offsets]
         for candidate in candidates:
-            if candidate.x < 0 or candidate.y < 0:
-                continue
-
-            elif candidate.x >= self.width:
-                continue
-
-            elif candidate.y >= self.height:
-                continue
-
-            elif candidate not in self.unvisited:
+            if (
+                0 <= candidate.x < self.width
+                and 0 <= candidate.y < self.height
+                and candidate not in self.unvisited
+            ):
                 visited += 1
 
         return visited
