@@ -26,7 +26,7 @@ class Button:
         self.func = method
 
         self._text_pos = self.text_surf.get_rect(center=self.rect.center).topleft
-        
+
         self._is_pressed = False
         self._init_pos = None
 
