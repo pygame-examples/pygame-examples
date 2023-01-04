@@ -35,10 +35,10 @@ async def main() -> None:
         screen.fill(bg_color)
 
         for event in pygame.event.get():
+            button.handle_events(event)
             if event.type == pygame.QUIT:
                 running = False
 
-        button.update()
         button.draw(screen)
         pygame.display.flip()
         await asyncio.sleep(0)
