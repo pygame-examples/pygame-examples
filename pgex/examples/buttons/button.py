@@ -26,6 +26,9 @@ class Button:
         self.func = method
 
         self._text_pos = self.text_surf.get_rect(center=self.rect.center).topleft
+        
+        self._is_pressed = False
+        self._init_pos = None
 
     def draw(self, surface: pygame.Surface) -> None:
         """Draws the pygame.Rect and font"""
@@ -37,7 +40,10 @@ class Button:
 
     def handle_events(self, event: pygame.event.Event) -> None:
         """Put this inside of your event loop"""
-        if event.type == pygame.MOUSEBUTTONDOWN and self.rect.collidepoint(
-            pygame.mouse.get_pos()
-        ):
-            self.func()
+        if self.rect.collidepoint(pygame.mouse.get_pos()):
+            if not self._is_pressed and event.type == pygame.MOUSEBUTTONDOWN:
+                self._is_pressed = True
+
+            elif self._is_pressed and event.type == pygame.MOUSEBUTTONUP:
+                self._is_pressed = False
+                self.func()
