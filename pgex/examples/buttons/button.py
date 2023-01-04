@@ -39,14 +39,13 @@ class Button:
 
     def handle_events(self, event: pygame.event.Event) -> None:
         """Put this inside of your event loop"""
-        if self.rect.collidepoint(pygame.mouse.get_pos()):
-            if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0]:
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1 and self.rect.collidepoint(event.pos):
                 self._is_pressed = True
-
-            elif self._is_pressed and event.type == pygame.MOUSEBUTTONUP:
+            else:
                 self._is_pressed = False
+
+        elif event.type == pygame.MOUSEBUTTONUP:
+            if self._is_pressed and self.rect.collidepoint(event.pos):
                 self.func()
-
-        else:
-            if event.type in (pygame.MOUSEBUTTONDOWN, pygame.MOUSEBUTTONUP):
-                self._is_pressed = False
+            self._is_pressed = False
