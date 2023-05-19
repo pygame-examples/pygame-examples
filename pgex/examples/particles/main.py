@@ -11,41 +11,45 @@ import time
 from typing import List
 
 import pygame
-
 from .particle import Particle
 
 
 def create_particles(particle_list: list):
     """
-    Function that creates a new particle
+    Adds a new particle to a list
     """
 
     particle_list.append(
         Particle(
-            pygame.mouse.get_pos(),  # pos
-            10,  # radius
-            random.uniform(0.4, 0.5),  # radius speed
-            pygame.Vector2(random.uniform(-5, 5), 7),  # vel
-            1,  # gravity
+            pos=pygame.Vector2(pygame.mouse.get_pos()),
+            vel=pygame.Vector2(random.uniform(-5, 5), 7),
+            radius=10,
+            radius_speed=random.uniform(0.4, 0.5),
+            gravity=1,
         )
     )
 
 
-def update_particles(particle_list: List[Particle], screen: pygame.Surface, dt: float):
+def update_particles(particle_list: List[Particle], dt: float):
     """
-    Function that updates particles
+    Updates particles from a list
     """
 
     for particle in particle_list:
         if particle.radius <= 0:
             particle_list.remove(particle)
 
-        particle.update(screen, dt)
+        particle.update(dt)
+
+
+def draw_particles(particle_list: List[Particle], screen: pygame.Surface):
+    for particle in particle_list:
+        particle.draw(screen)
 
 
 async def main():
     """
-    Function that contains game variables and the game loop
+    Contains game variables and the game loop
     """
     screen = pygame.display.set_mode((600, 500))
     pygame.display.set_caption("Particles!")
@@ -63,7 +67,8 @@ async def main():
         screen.fill("black")
 
         create_particles(particles)
-        update_particles(particles, screen, dt)
+        update_particles(particles, dt)
+        draw_particles(particles, screen)
 
         pygame.display.flip()
         await asyncio.sleep(0)

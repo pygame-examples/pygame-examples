@@ -15,7 +15,6 @@ class Darkener:
         radius: int,
         darken_ratio: float,
     ) -> None:
-
         if not 0 <= darken_ratio <= 1:
             raise ValueError("darken_ratio must be between 0 and 1")
 
