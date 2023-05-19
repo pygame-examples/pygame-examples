@@ -8,9 +8,7 @@ import asyncio
 import pygame
 
 from .bullet import Bullet
-
-WIDTH, HEIGHT = 640, 360
-FPS = 60
+from .settings import BULLET_VEL, FPS, HEIGHT, MIDLEFT, WIDTH
 
 
 async def main() -> None:
@@ -31,7 +29,7 @@ async def main() -> None:
                 running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    new_bullet = Bullet(pygame.Vector2(0, 180), pygame.Vector2(5, 0))
+                    new_bullet = Bullet(start_pos=MIDLEFT, velocity=BULLET_VEL)
                     bullet_group.add(new_bullet)
 
         bullet_group.update()
