@@ -60,3 +60,6 @@ class Game:
         """
 
         asyncio.run(self.main())
+
+
+Game().run()

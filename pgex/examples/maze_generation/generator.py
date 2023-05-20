@@ -15,7 +15,6 @@ from .tile import Tile
 
 class Generator:
     def __init__(self, size: Array, tilesize: int, seed: _SeedValue = None) -> None:
-
         random.seed(seed)  # sets the seed for the random number generator
 
         if not isinstance(size, pygame.Vector2):
