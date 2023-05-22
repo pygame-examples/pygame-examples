@@ -4,7 +4,6 @@ The source code is distributed under the MIT license.
 """
 
 import asyncio
-from typing import Tuple
 
 import pygame
 
