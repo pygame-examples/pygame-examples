@@ -27,19 +27,12 @@ class Entity:
 
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
-    def get_centered_position(self) -> pygame.Rect:
-        """
-        Returns the center of the entities rect
-        """
-
-        return self.rect.center
-
     def move_towards(self, x_pos: int, y_pos: int) -> None:
         """
         Moves entity toward a give position
         """
 
-        position_vector = pygame.Vector2(*self.get_centered_position())
+        position_vector = pygame.Vector2(self.rect.center)
         update_position = position_vector.move_towards((x_pos, y_pos), self.speed)
         self.rect.center = update_position
 

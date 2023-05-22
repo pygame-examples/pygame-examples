@@ -28,13 +28,6 @@ class Game:
             x=100, y=100, width=64, height=64, speed=5, color=(255, 0, 0)
         )
 
-    def get_mouse_position(self) -> Tuple[int, int]:
-        """
-        Returns mouse position.
-        """
-
-        return pygame.mouse.get_pos()
-
     async def main(self) -> None:
         """
         Game main loop. Handles events, rendering etc.
@@ -47,7 +40,7 @@ class Game:
                 if event.type == pygame.QUIT:
                     self.running = False
 
-            self.entity.move_towards(*self.get_mouse_position())
+            self.entity.move_towards(*pygame.mouse.get_pos())
             self.entity.draw(self.display)
 
             pygame.display.flip()
