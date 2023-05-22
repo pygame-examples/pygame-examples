@@ -11,6 +11,7 @@ import time
 from typing import List
 
 import pygame
+
 from .particle import Particle
 
 
